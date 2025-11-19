@@ -5,9 +5,11 @@
 ∗ . log
 ∗ . jou
 ∗ . str
-∗ . tcl~
+∗ . tcl
 ∗ . rpt
 ∗ . vdi
+* . pb
+* . dcp
 
 # bitstreams / images
 ∗ . bit
@@ -49,7 +51,7 @@
  #########################################################
 
  # O r d ne r e a n d e r n s i c h j e nac h P r o j e k t o r d n e r Name bspw .
-Programmentwurf_PingPong . cache / 
+Ping-Pong . cache / 
 ∗ . cache /
 ∗ . hw /
 ∗ . runs /
@@ -59,6 +61,11 @@ Programmentwurf_PingPong . cache /
 ∗ . backup ∗ /
 ∗ . debug /
 ∗ . xpr . user
+
+Ping-Pong . runs / 
+Ping-Pong . hw / 
+Ping-Pong . ip_user_files / 
+Ping-Pong . sim / 
 
 # Xilinx tooling temp data
 . Xil /
@@ -72,3 +79,6 @@ xvlog . ∗
 # crash logs
 hs_err_pid ∗
 vivado_pid ∗ . str
+
+# Misc
+*.backup.*
