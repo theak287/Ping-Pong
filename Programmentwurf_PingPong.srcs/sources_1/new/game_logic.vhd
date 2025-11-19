@@ -215,79 +215,36 @@ begin
                 end if;
                 
                 --------------------------------------------------------------------
-                -- 5. PADDLE COLLISION (left + right)
-                 --------------------------------------------------------------------
+                -- 5. PADDLE COLLISION (Einfallswinkel = Ausfallswinkel)
+                --------------------------------------------------------------------
 
-
-                ball_center := ball_y_reg + BALL_SIZE/2;
-
-                -------------------------
-                -- LEFT PADDLE COLLISION
-                -------------------------
+                -- LEFT PADDLE
                 if (ball_x_reg <= PADDLE_LEFT_X + PADDLE_WIDTH) and
                     (ball_x_reg + BALL_SIZE >= PADDLE_LEFT_X) and
                     (ball_y_reg + BALL_SIZE > paddle_left_y_reg) and
                     (ball_y_reg < paddle_left_y_reg + PADDLE_HEIGHT) then
 
-                -- Ball rechts neben das Paddle setzen, damit er nicht klebt
-                ball_x_reg <= PADDLE_LEFT_X + PADDLE_WIDTH + 1;
+                    -- Ball minimal aus dem Paddle heraussetzen, damit er nicht klebt
+                    ball_x_reg <= PADDLE_LEFT_X + PADDLE_WIDTH + 1;
 
-                -- X-Richtung umdrehen (nach rechts)
-                ball_vx <= abs(ball_vx);
-
-                -- Trefferposition bestimmen
-                paddle_center := paddle_left_y_reg + PADDLE_HEIGHT/2;
-                delta := ball_center - paddle_center;
-
-                -- vertikaler Winkel
-                if delta < -40 then
-                    ball_vy <= -3;   -- steil nach oben
-                elsif delta < -15 then
-                    ball_vy <= -2;
-                elsif delta < 15 then
-                    ball_vy <= 0;    -- flach
-                elsif delta < 40 then
-                    ball_vy <= +2;
-                else
-                    ball_vy <= +3;   -- steil nach unten
+                    -- Nur x-Komponente spiegeln (Normale des Paddles ist in x-Richtung)
+                    ball_vx <= abs(ball_vx);   -- immer nach rechts
+                    -- vy bleibt unverändert → Einfallswinkel = Ausfallswinkel
                 end if;
-            end if;
 
+                -- RIGHT PADDLE
+                if (ball_x_reg + BALL_SIZE >= PADDLE_RIGHT_X) and
+                    (ball_x_reg <= PADDLE_RIGHT_X + PADDLE_WIDTH) and
+                    (ball_y_reg + BALL_SIZE > paddle_right_y_reg) and
+                    (ball_y_reg < paddle_right_y_reg + PADDLE_HEIGHT) then
 
-        -------------------------
-        -- RIGHT PADDLE COLLISION
-        -------------------------
-        if (ball_x_reg + BALL_SIZE >= PADDLE_RIGHT_X) and
-            (ball_x_reg <= PADDLE_RIGHT_X + PADDLE_WIDTH) and
-            (ball_y_reg + BALL_SIZE > paddle_right_y_reg) and
-            (ball_y_reg < paddle_right_y_reg + PADDLE_HEIGHT) then
+                    -- Ball minimal aus dem Paddle heraussetzen
+                    ball_x_reg <= PADDLE_RIGHT_X - BALL_SIZE - 1;
 
-        -- Ball links neben das Paddle setzen
-        ball_x_reg <= PADDLE_RIGHT_X - BALL_SIZE - 1;
-
-        -- X-Richtung umdrehen (nach links)
-        ball_vx <= -abs(ball_vx);
-
-        -- Trefferposition bestimmen
-        paddle_center := paddle_right_y_reg + PADDLE_HEIGHT/2;
-        delta := ball_center - paddle_center;
-
-        -- vertikaler Winkel
-        if delta < -40 then
-            ball_vy <= -3;
-        elsif delta < -15 then
-            ball_vy <= -2;
-        elsif delta < 15 then
-            ball_vy <= 0;
-        elsif delta < 40 then
-            ball_vy <= +2;
-        else
-            ball_vy <= +3;
-        end if;
-    end if;
-
-
-
+                    -- x-Komponente spiegeln (jetzt nach links)
+                    ball_vx <= -abs(ball_vx);
+                    -- vy bleibt unverändert
+                end if;
 
                 ----------------------------------------------------------------
                 -- CLAMPING (oben/unten stoppen)

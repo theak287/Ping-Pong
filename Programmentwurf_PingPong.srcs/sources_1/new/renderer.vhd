@@ -72,7 +72,8 @@ architecture Behavioral of renderer is
     signal pixel_in_ball         : std_logic := '0';
     signal pixel_in_paddle_left  : std_logic := '0';
     signal pixel_in_paddle_right : std_logic := '0';
-
+    
+    signal pixel_in_midline : std_logic := '0';
     -------------------------------------------------------------------------
     -- PIXELMASKEN STARTSCREEN
     -------------------------------------------------------------------------
@@ -112,6 +113,14 @@ begin
         (to_integer(pixel_x) <  PADDLE_RIGHT_X + PADDLE_WIDTH) and
         (to_integer(pixel_y) >= paddle_right_y) and
         (to_integer(pixel_y) <  paddle_right_y + PADDLE_HEIGHT)
+    else
+        '0';
+    -------------------------------------------------------------------------
+    -- Middle line
+    -------------------------------------------------------------------------  
+    pixel_in_midline <= '1' when
+        (to_integer(pixel_x) = 1920/2) and    -- mittlere Spalte
+        ((to_integer(pixel_y) mod 20) < 10)   -- Länge 10px, Pause 10px
     else
         '0';
 
@@ -209,14 +218,27 @@ begin
             if pixel_in_ball = '1' then
                 -- BALL = ROT
                 vga_r <= "1111";
+                vga_g <= "1111";
+                vga_b <= "1111";
+
+            elsif pixel_in_paddle_left = '1' then
+                -- LINKES PADDLE = ROT
+                vga_r <= "1111";
                 vga_g <= "0000";
                 vga_b <= "0000";
 
-            elsif (pixel_in_paddle_left = '1') or (pixel_in_paddle_right = '1') then
-                -- PADDLE = BLAU
+            elsif pixel_in_paddle_right = '1' then
+                -- RECHTES PADDLE = BLAU
                 vga_r <= "0000";
                 vga_g <= "0000";
                 vga_b <= "1111";
+            elsif pixel_in_midline = '1' then
+                -- MITTELLINIE = WEISS
+                vga_r <= "1111";
+                vga_g <= "1111";
+                vga_b <= "1111";
+
+
 
             else
                 -- HINTERGRUND = SCHWARZ
