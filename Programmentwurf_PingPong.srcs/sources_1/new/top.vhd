@@ -106,6 +106,7 @@ signal paddle_left_y_s, paddle_right_y_s : integer;
 signal score_s, lives_s                : integer;
 signal game_state_s                    : std_logic_vector(1 downto 0);
 
+
 --------------------------------------------------------------------
 -- RENDERER OUTPUT
 --------------------------------------------------------------------
