@@ -5,9 +5,11 @@
 ∗ . log
 ∗ . jou
 ∗ . str
-∗ . tcl~
+∗ . tcl
 ∗ . rpt
 ∗ . vdi
+* . pb
+* . dcp
 
 # bitstreams / images
 ∗ . bit
@@ -60,6 +62,11 @@ Ping-Pong . cache /
 ∗ . debug /
 ∗ . xpr . user
 
+Ping-Pong . runs / 
+Ping-Pong . hw / 
+Ping-Pong . ip_user_files / 
+Ping-Pong . sim / 
+
 # Xilinx tooling temp data
 . Xil /
 . cache /
@@ -72,3 +79,6 @@ xvlog . ∗
 # crash logs
 hs_err_pid ∗
 vivado_pid ∗ . str
+
+# Misc
+*.backup.*
