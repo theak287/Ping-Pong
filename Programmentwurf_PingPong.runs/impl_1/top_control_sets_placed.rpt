@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Tue Nov 18 12:11:56 2025
-| Host         : NB-TJ-01 running 64-bit major release  (build 9200)
+| Date         : Wed Nov 19 14:33:25 2025
+| Host         : ThinkBook_Pauli running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
 | Device       : xc7a35ti
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     7 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    40 |
+| Unused register locations in slices containing registers |    23 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -40,12 +40,12 @@ Table of Contents
 |       Fanout       | Count |
 +--------------------+-------+
 | Total control sets |     7 |
-| >= 0 to < 4        |     2 |
+| >= 0 to < 4        |     1 |
 | >= 4 to < 6        |     0 |
-| >= 6 to < 8        |     0 |
+| >= 6 to < 8        |     3 |
 | >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     3 |
-| >= 12 to < 14      |     1 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     2 |
 | >= 14 to < 16      |     0 |
 | >= 16              |     1 |
 +--------------------+-------+
@@ -58,28 +58,28 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               1 |            1 |
+| No           | No                    | No                     |               7 |            5 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              31 |            8 |
-| Yes          | No                    | No                     |              21 |           10 |
+| Yes          | No                    | No                     |              14 |            8 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              11 |            3 |
+| Yes          | Yes                   | No                     |              13 |            5 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+-------------------------+------------------------------------------+-----------------------------------+------------------+----------------+--------------+
-|       Clock Signal      |               Enable Signal              |          Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
-+-------------------------+------------------------------------------+-----------------------------------+------------------+----------------+--------------+
-|  clk_inst/inst/clk_out1 |                                          |                                   |                1 |              1 |         1.00 |
-|  clk_inst/inst/clk_out1 | vga_inst/v_count_0                       |                                   |                1 |              1 |         1.00 |
-|  clk_inst/inst/clk_out1 | game_inst/paddle_left_y_reg[31]_i_1_n_0  |                                   |                5 |             10 |         2.00 |
-|  clk_inst/inst/clk_out1 | game_inst/paddle_right_y_reg[31]_i_1_n_0 |                                   |                4 |             10 |         2.50 |
-|  clk_inst/inst/clk_out1 | vga_inst/v_count_0                       | vga_inst/v_count[11]_i_1_n_0      |                3 |             11 |         3.67 |
-|  clk_inst/inst/clk_out1 |                                          | vga_inst/v_count_0                |                3 |             12 |         4.00 |
-|  clk_inst/inst/clk_out1 |                                          | game_inst/tick_counter[0]_i_1_n_0 |                5 |             19 |         3.80 |
-+-------------------------+------------------------------------------+-----------------------------------+------------------+----------------+--------------+
++-------------------------+-----------------------------------------+-----------------------------------+------------------+----------------+--------------+
+|       Clock Signal      |              Enable Signal              |          Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------+-----------------------------------------+-----------------------------------+------------------+----------------+--------------+
+|  clk_inst/inst/clk_out1 | BTN_IBUF[0]                             | SW_IBUF[0]                        |                1 |              1 |         1.00 |
+|  clk_inst/inst/clk_out1 |                                         |                                   |                5 |              7 |         1.40 |
+|  clk_inst/inst/clk_out1 | game_inst/paddle_left_y_reg[9]_i_1_n_0  |                                   |                4 |              7 |         1.75 |
+|  clk_inst/inst/clk_out1 | game_inst/paddle_right_y_reg[9]_i_1_n_0 |                                   |                4 |              7 |         1.75 |
+|  clk_inst/inst/clk_out1 |                                         | vga_inst/h_count[0]_i_1_n_0       |                3 |             12 |         4.00 |
+|  clk_inst/inst/clk_out1 | vga_inst/v_count[11]_i_2_n_0            | vga_inst/v_count[11]_i_1_n_0      |                4 |             12 |         3.00 |
+|  clk_inst/inst/clk_out1 |                                         | game_inst/tick_counter[0]_i_1_n_0 |                5 |             19 |         3.80 |
++-------------------------+-----------------------------------------+-----------------------------------+------------------+----------------+--------------+
 
 

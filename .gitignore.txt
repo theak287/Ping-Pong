@@ -49,7 +49,7 @@
  #########################################################
 
  # O r d ne r e a n d e r n s i c h j e nac h P r o j e k t o r d n e r Name bspw .
-Programmentwurf_PingPong . cache / 
+Ping-Pong . cache / 
 ∗ . cache /
 ∗ . hw /
 ∗ . runs /

@@ -1,5 +1,5 @@
 namespace eval ::optrace {
-  variable script "C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.runs/impl_1/top.tcl"
+  variable script "C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.runs/impl_1/top.tcl"
   variable category "vivado_impl"
 }
 
@@ -104,29 +104,29 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 3
+  set_param chipscope.maxJobs 5
   set_param general.usePosixSpawnForFork 1
   set_param xicom.use_bs_reader 1
-  set_param runs.launchOptions { -jobs 6  }
+  set_param runs.launchOptions { -jobs 10  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a35ticsg324-1L
-  set_property board_part_repo_paths {C:/Users/thea/AppData/Roaming/Xilinx/Vivado/2025.1/xhub/board_store/xilinx_board_store} [current_project]
+  set_property board_part_repo_paths {C:/Users/pauli/AppData/Roaming/Xilinx/Vivado/2025.1/xhub/board_store/xilinx_board_store} [current_project]
   set_property board_part digilentinc.com:arty-a7-35:part0:1.1 [current_project]
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.cache/wt} [current_project]
-  set_property parent.project_path {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.xpr} [current_project]
-  set_property ip_output_repo {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.cache/ip}} [current_project]
+  set_property webtalk.parent_dir C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.cache/wt [current_project]
+  set_property parent.project_path C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.xpr [current_project]
+  set_property ip_output_repo C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_CDC [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.runs/synth_1/top.dcp}}
-  read_ip -quiet {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
+  add_files -quiet C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.runs/synth_1/top.dcp
+  read_ip -quiet C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 OPTRACE "read constraints: implementation" START { }
-  read_xdc C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc
+  read_xdc C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

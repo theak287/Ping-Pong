@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.runs/synth_1/top.tcl"
+  variable script "C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.runs/synth_1/top.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,7 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 3
+set_param chipscope.maxJobs 5
 set_param general.usePosixSpawnForFork 1
 set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
@@ -66,28 +66,29 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.xpr} [current_project]
+set_property webtalk.parent_dir C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.cache/wt [current_project]
+set_property parent.project_path C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.xpr [current_project]
 set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property board_part_repo_paths {C:/Users/thea/AppData/Roaming/Xilinx/Vivado/2025.1/xhub/board_store/xilinx_board_store} [current_project]
+set_property board_part_repo_paths {C:/Users/pauli/AppData/Roaming/Xilinx/Vivado/2025.1/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:arty-a7-35:part0:1.1 [current_project]
-set_property ip_output_repo {c:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.cache/ip} [current_project]
+set_property ip_output_repo c:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd}
-  {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd}
-  {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd}
-  {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/buttons.vhd}
-  {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd}
+  C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd
+  C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd
+  C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd
+  C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/buttons.vhd
+  C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd
+  C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/startscreen.vhd
 }
-read_ip -quiet {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
-set_property used_in_implementation false [get_files -all {{c:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}]
-set_property used_in_implementation false [get_files -all {{c:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc}}]
-set_property used_in_implementation false [get_files -all {{c:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc}}]
+read_ip -quiet C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -98,12 +99,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc
-set_property used_in_implementation false [get_files C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc]
+read_xdc C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc
+set_property used_in_implementation false [get_files C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/utils_1/imports/synth_1/top.dcp}
+read_checkpoint -auto_incremental -incremental C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/utils_1/imports/synth_1/top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

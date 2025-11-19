@@ -8,14 +8,14 @@
   **** SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
   **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
   **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-  **** Start of session at: Tue Nov 18 12:10:05 2025
+  **** Start of session at: Wed Nov 19 14:31:28 2025
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source top.tcl -notrace
-create_project: Time (s): cpu = 00:00:22 ; elapsed = 00:00:17 . Memory (MB): peak = 503.664 ; gain = 213.027
-Command: read_checkpoint -auto_incremental -incremental {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/utils_1/imports/synth_1/top.dcp}
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 503.488 ; gain = 211.125
+Command: read_checkpoint -auto_incremental -incremental C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/utils_1/imports/synth_1/top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top top -part xc7a35ticsg324-1L
 Starting synth_design
@@ -26,74 +26,74 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 29008
+INFO: [Synth 8-7075] Helper process launched with PID 7532
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1199.688 ; gain = 493.184
+Starting RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1201.207 ; gain = 494.402
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'top' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:47]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.runs/synth_1/.Xil/Vivado-5228-NB-TJ-01/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'clk_inst' of component 'clk_wiz_0' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:137]
-INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.runs/synth_1/.Xil/Vivado-5228-NB-TJ-01/realtime/clk_wiz_0_stub.vhdl:18]
-INFO: [Synth 8-3491] module 'vga_sync' declared at 'C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd:34' bound to instance 'vga_inst' of component 'vga_sync' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:147]
-INFO: [Synth 8-638] synthesizing module 'vga_sync' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd:49]
-INFO: [Synth 8-256] done synthesizing module 'vga_sync' (0#1) [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd:49]
-INFO: [Synth 8-3491] module 'game_logic' declared at 'C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd:34' bound to instance 'game_inst' of component 'game_logic' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:161]
-INFO: [Synth 8-638] synthesizing module 'game_logic' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd:52]
-INFO: [Synth 8-256] done synthesizing module 'game_logic' (0#1) [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd:52]
-INFO: [Synth 8-3491] module 'renderer' declared at 'C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd:34' bound to instance 'renderer_inst' of component 'renderer' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:181]
-INFO: [Synth 8-638] synthesizing module 'renderer' [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd:55]
-INFO: [Synth 8-256] done synthesizing module 'renderer' (0#1) [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd:55]
-INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'top' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:39]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.runs/synth_1/.Xil/Vivado-13564-ThinkBook_Pauli/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'clk_inst' of component 'clk_wiz_0' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:137]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.runs/synth_1/.Xil/Vivado-13564-ThinkBook_Pauli/realtime/clk_wiz_0_stub.vhdl:18]
+INFO: [Synth 8-3491] module 'vga_sync' declared at 'C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd:34' bound to instance 'vga_inst' of component 'vga_sync' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:148]
+INFO: [Synth 8-638] synthesizing module 'vga_sync' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'vga_sync' (0#1) [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd:49]
+INFO: [Synth 8-3491] module 'game_logic' declared at 'C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd:34' bound to instance 'game_inst' of component 'game_logic' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:162]
+INFO: [Synth 8-638] synthesizing module 'game_logic' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'game_logic' (0#1) [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd:52]
+INFO: [Synth 8-3491] module 'renderer' declared at 'C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd:27' bound to instance 'renderer_inst' of component 'renderer' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:195]
+INFO: [Synth 8-638] synthesizing module 'renderer' [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'renderer' (0#1) [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/sources_1/new/top.vhd:39]
 WARNING: [Synth 8-7129] Port clk in module renderer is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1309.148 ; gain = 602.645
+Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1312.250 ; gain = 605.445
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1309.148 ; gain = 602.645
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1312.250 ; gain = 605.445
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1309.148 ; gain = 602.645
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1312.250 ; gain = 605.445
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1309.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 1312.250 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_inst'
-Finished Parsing XDC File [c:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_inst'
-Parsing XDC File [C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc]
-Finished Parsing XDC File [C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Parsing XDC File [c:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_inst'
+Finished Parsing XDC File [c:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_inst'
+Parsing XDC File [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc]
+Finished Parsing XDC File [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1387.043 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1389.301 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1387.043 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1389.301 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1387.043 ; gain = 680.539
+Finished Constraint Validation : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1389.301 ; gain = 682.496
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35ticsg324-1L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1387.043 ; gain = 680.539
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1389.301 ; gain = 682.496
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1387.043 ; gain = 680.539
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1389.301 ; gain = 682.496
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 1387.043 ; gain = 680.539
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1389.301 ; gain = 682.496
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -101,17 +101,22 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   3 Input   33 Bit       Adders := 4     
-	   2 Input   32 Bit       Adders := 4     
+	   2 Input   32 Bit       Adders := 6     
+	   2 Input   31 Bit       Adders := 2     
+	   2 Input   13 Bit       Adders := 2     
 	   2 Input   12 Bit       Adders := 1     
 	   2 Input   11 Bit       Adders := 4     
 +---Registers : 
 	               32 Bit    Registers := 6     
 	               12 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
 +---Muxes : 
+	   2 Input   32 Bit        Muxes := 2     
+	   2 Input   31 Bit        Muxes := 2     
 	   5 Input   15 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 3     
+	   4 Input    7 Bit        Muxes := 13    
+	   2 Input    4 Bit        Muxes := 7     
 	   2 Input    1 Bit        Muxes := 8     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -129,30 +134,27 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-3917] design top has port VGA_G[3] driven by constant 0
-WARNING: [Synth 8-3917] design top has port VGA_G[2] driven by constant 0
-WARNING: [Synth 8-3917] design top has port VGA_G[1] driven by constant 0
-WARNING: [Synth 8-3917] design top has port VGA_G[0] driven by constant 0
+WARNING: [Synth 8-7129] Port clk in module renderer is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 1387.043 ; gain = 680.539
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:45 . Memory (MB): peak = 1393.875 ; gain = 687.070
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1517.695 ; gain = 811.191
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:00:51 . Memory (MB): peak = 1510.570 ; gain = 803.766
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1553.941 ; gain = 847.438
+Finished Timing Optimization : Time (s): cpu = 00:00:49 ; elapsed = 00:00:53 . Memory (MB): peak = 1580.004 ; gain = 873.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 1555.230 ; gain = 848.727
+Finished Technology Mapping : Time (s): cpu = 00:00:49 ; elapsed = 00:00:53 . Memory (MB): peak = 1580.004 ; gain = 873.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -170,37 +172,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1767.305 ; gain = 1060.801
+Finished IO Insertion : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 1763.742 ; gain = 1056.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1767.305 ; gain = 1060.801
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 1763.742 ; gain = 1056.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1767.305 ; gain = 1060.801
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 1763.742 ; gain = 1056.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1767.305 ; gain = 1060.801
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 1763.742 ; gain = 1056.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1767.305 ; gain = 1060.801
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 1763.742 ; gain = 1056.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1767.305 ; gain = 1060.801
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:53 ; elapsed = 00:00:58 . Memory (MB): peak = 1763.742 ; gain = 1056.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -218,39 +220,41 @@ Report Cell Usage:
 |      |Cell           |Count |
 +------+---------------+------+
 |1     |clk_wiz_0_bbox |     1|
-|2     |CARRY4         |    76|
-|3     |LUT1           |   110|
-|4     |LUT2           |    90|
-|5     |LUT3           |    17|
-|6     |LUT4           |    27|
-|7     |LUT5           |    14|
-|8     |LUT6           |    34|
-|9     |FDRE           |    64|
-|10    |IBUF           |     5|
-|11    |OBUF           |    14|
+|2     |CARRY4         |   117|
+|3     |LUT1           |   145|
+|4     |LUT2           |   161|
+|5     |LUT3           |    55|
+|6     |LUT4           |    43|
+|7     |LUT5           |    44|
+|8     |LUT6           |    68|
+|9     |MUXF7          |     5|
+|10    |MUXF8          |     1|
+|11    |FDRE           |    65|
+|12    |IBUF           |     5|
+|13    |OBUF           |    14|
 +------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1767.305 ; gain = 1060.801
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:53 ; elapsed = 00:00:58 . Memory (MB): peak = 1763.742 ; gain = 1056.938
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:38 . Memory (MB): peak = 1767.305 ; gain = 982.906
-Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:42 . Memory (MB): peak = 1767.305 ; gain = 1060.801
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:53 . Memory (MB): peak = 1763.742 ; gain = 979.887
+Synthesis Optimization Complete : Time (s): cpu = 00:00:53 ; elapsed = 00:00:58 . Memory (MB): peak = 1763.742 ; gain = 1056.938
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1772.293 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 76 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1772.941 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 123 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1775.047 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1776.629 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: cdff5464
+Synth Design complete | Checksum: cd583b62
 INFO: [Common 17-83] Releasing license: Synthesis
-34 Infos, 6 Warnings, 0 Critical Warnings and 0 Errors encountered.
+34 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:51 . Memory (MB): peak = 1775.047 ; gain = 1256.574
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1775.047 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.runs/synth_1/top.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:59 ; elapsed = 00:01:08 . Memory (MB): peak = 1776.629 ; gain = 1257.391
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1776.629 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/pauli/Ping-Pong/Programmentwurf_PingPong.runs/synth_1/top.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Nov 18 12:11:18 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 19 14:32:44 2025...

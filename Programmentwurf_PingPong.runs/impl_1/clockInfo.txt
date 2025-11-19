@@ -1,7 +1,7 @@
 -------------------------------------
 | Tool Version : Vivado v.2025.1
-| Date         : Tue Nov 18 12:11:55 2025
-| Host         : NB-TJ-01
+| Date         : Wed Nov 19 14:33:24 2025
+| Host         : ThinkBook_Pauli
 | Design       : design_1
 | Device       : xc7a35ti-csg324-1L-I-
 -------------------------------------
