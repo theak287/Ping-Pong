@@ -1,0 +1,10 @@
+vhdl xpm  \
+"C:/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_VCOMP.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../Programmentwurf_PingPong.srcs/sources_1/new/renderer.vhd" \
+"../../../Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd" \
+"../../../Programmentwurf_PingPong.srcs/sources_1/new/top.vhd" \
+
+# Do not sort compile order
+nosort

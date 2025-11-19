@@ -1,0 +1,74 @@
+#########################################################
+# Vivado p roject ignore fil e
+#########################################################
+# logs , temp , r e p o rt s
+∗ . log
+∗ . jou
+∗ . str
+∗ . tcl~
+∗ . rpt
+∗ . vdi
+
+# bitstreams / images
+∗ . bit
+∗ . bin
+∗ . mcs
+∗ . svf
+∗ . image
+
+# netlists
+∗ . edf
+∗ . edif
+
+∗ . vn
+∗ . vm
+
+# SDF
+∗ . sdf
+
+# sim ulati o n dumps
+∗ . vcd
+∗ . saif
+∗ . tcf
+∗ . wdb
+
+# Xilinx internal simulation / webtalk data
+ unisims /
+ webtalk . ∗
+ fsm_encoding . os
+
+# compiled files
+∗ . elf
+∗ . a
+∗ . sa
+∗ . so
+∗ . lib
+
+ #########################################################
+ # Vivado auto−generated project dirs
+ #########################################################
+
+ # O r d ne r e a n d e r n s i c h j e nac h P r o j e k t o r d n e r Name bspw .
+Programmentwurf_PingPong . cache / 
+∗ . cache /
+∗ . hw /
+∗ . runs /
+∗ . sim /
+ ∗ . gen /
+∗ . ip_user_files /
+∗ . backup ∗ /
+∗ . debug /
+∗ . xpr . user
+
+# Xilinx tooling temp data
+. Xil /
+. cache /
+
+# xsim / xvlog
+xelab . ∗
+xsim . ∗
+xvlog . ∗
+
+# crash logs
+hs_err_pid ∗
+vivado_pid ∗ . str

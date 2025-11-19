@@ -1,0 +1,11 @@
+sv xpm -i "../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0" \
+"C:/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+
+verilog xil_defaultlib -i "../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0" \
+"../../../Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
+"../../../Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
