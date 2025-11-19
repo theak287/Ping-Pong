@@ -126,7 +126,7 @@ OPTRACE "add files" START { }
   add_files -quiet {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.runs/synth_1/top.dcp}}
   read_ip -quiet {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
 OPTRACE "read constraints: implementation" START { }
-  read_xdc C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc
+  read_xdc {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc}}
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

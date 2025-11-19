@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Wed Nov 19 14:39:24 2025
+| Date         : Wed Nov 19 17:05:03 2025
 | Host         : NB-TJ-01 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    11 |
-|    Minimum number of control sets                        |    11 |
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    30 |
+| Unused register locations in slices containing registers |    39 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,8 +39,8 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    11 |
-| >= 0 to < 4        |     0 |
+| Total control sets |    12 |
+| >= 0 to < 4        |     1 |
 | >= 4 to < 6        |     0 |
 | >= 6 to < 8        |     2 |
 | >= 8 to < 10       |     0 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               6 |            5 |
+| No           | No                    | No                     |               6 |            4 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              34 |            9 |
-| Yes          | No                    | No                     |              51 |           20 |
+| Yes          | No                    | No                     |              51 |           19 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             103 |           37 |
+| Yes          | Yes                   | No                     |             102 |           31 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,17 +73,18 @@ Table of Contents
 +-------------------------+------------------------------------------+-----------------------------------+------------------+----------------+--------------+
 |       Clock Signal      |               Enable Signal              |          Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------------+------------------------------------------+-----------------------------------+------------------+----------------+--------------+
-|  clk_inst/inst/clk_out1 |                                          |                                   |                5 |              6 |         1.20 |
-|  clk_inst/inst/clk_out1 | game_inst/game_tick_reg_n_0              | SW_IBUF[0]                        |                6 |              6 |         1.00 |
-|  clk_inst/inst/clk_out1 | game_inst/paddle_right_y_reg[31]_i_1_n_0 |                                   |                6 |             10 |         1.67 |
-|  clk_inst/inst/clk_out1 | game_inst/paddle_left_y_reg[31]_i_1_n_0  |                                   |                6 |             10 |         1.67 |
-|  clk_inst/inst/clk_out1 | vga_inst/v_count_0                       | vga_inst/v_count[11]_i_1_n_0      |                3 |             11 |         3.67 |
-|  clk_inst/inst/clk_out1 |                                          | vga_inst/v_count_0                |                3 |             12 |         4.00 |
+|  clk_inst/inst/clk_out1 | BTN_IBUF[0]                              | SW_IBUF[0]                        |                1 |              1 |         1.00 |
+|  clk_inst/inst/clk_out1 |                                          |                                   |                4 |              6 |         1.50 |
+|  clk_inst/inst/clk_out1 | game_inst/game_tick_reg_n_0              | SW_IBUF[0]                        |                3 |              6 |         2.00 |
+|  clk_inst/inst/clk_out1 | game_inst/paddle_left_y_reg[31]_i_1_n_0  |                                   |                5 |             10 |         2.00 |
+|  clk_inst/inst/clk_out1 | game_inst/paddle_right_y_reg[31]_i_1_n_0 |                                   |                4 |             10 |         2.50 |
+|  clk_inst/inst/clk_out1 | vga_inst/v_count                         | vga_inst/v_count[11]_i_1_n_0      |                3 |             11 |         3.67 |
+|  clk_inst/inst/clk_out1 |                                          | vga_inst/v_count                  |                3 |             12 |         4.00 |
 |  clk_inst/inst/clk_out1 |                                          | game_inst/tick_counter[0]_i_1_n_0 |                6 |             22 |         3.67 |
 |  clk_inst/inst/clk_out1 | game_inst/game_tick_reg_n_0              | game_inst/ball_x_reg[31]_i_1_n_0  |                8 |             23 |         2.88 |
-|  clk_inst/inst/clk_out1 | game_inst/ball_vx[31]_i_1_n_0            |                                   |                8 |             31 |         3.88 |
-|  clk_inst/inst/clk_out1 | game_inst/ball_vy                        | game_inst/ball_vy[31]_i_1_n_0     |                9 |             31 |         3.44 |
-|  clk_inst/inst/clk_out1 | game_inst/game_tick_reg_n_0              | game_inst/ball_y_reg[31]_i_1_n_0  |               11 |             32 |         2.91 |
+|  clk_inst/inst/clk_out1 | game_inst/ball_vy                        | game_inst/ball_vy[31]_i_1_n_0     |                8 |             29 |         3.62 |
+|  clk_inst/inst/clk_out1 | game_inst/ball_vx[31]_i_1_n_0            |                                   |               10 |             31 |         3.10 |
+|  clk_inst/inst/clk_out1 | game_inst/game_tick_reg_n_0              | game_inst/ball_y_reg[31]_i_1_n_0  |                8 |             32 |         4.00 |
 +-------------------------+------------------------------------------+-----------------------------------+------------------+----------------+--------------+
 
 

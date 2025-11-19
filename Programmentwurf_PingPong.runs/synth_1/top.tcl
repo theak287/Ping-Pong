@@ -83,6 +83,7 @@ read_vhdl -library xil_defaultlib {
   {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/vga_sync.vhd}
   {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/buttons.vhd}
   {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/game_logic.vhd}
+  {C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/new/startscreen.vhd}
 }
 read_ip -quiet {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}]
@@ -98,8 +99,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc
-set_property used_in_implementation false [get_files C:/Users/thea/Downloads/digilent-xdc-master/digilent-xdc-master/Arty-A7-35-Master.xdc]
+read_xdc {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/thea/Documents/Vivado Projekte/Programmentwurf_PingPong/Programmentwurf_PingPong.srcs/constrs_1/imports/constraints/Arty_Master.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
 
