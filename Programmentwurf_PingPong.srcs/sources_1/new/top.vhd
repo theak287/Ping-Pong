@@ -89,15 +89,18 @@ architecture Behavioral of top is
             paddle_left_y   : out integer;
             paddle_right_y  : out integer;
 
-            score           : out integer;
-            lives           : out integer;
+            score_left      : out integer;
+            score_right     : out integer;
+            lives_left      : out integer;
+            lives_right     : out integer;
             game_state      : out std_logic_vector(1 downto 0)
         );
     end component;
 
     signal ball_x_s, ball_y_s               : integer;
     signal paddle_left_y_s, paddle_right_y_s: integer;
-    signal score_s, lives_s                 : integer;
+    signal score_left_s, score_right_s      : integer;
+    signal lives_left_s, lives_right_s      : integer;
     signal game_state_s                     : std_logic_vector(1 downto 0);
 
     --------------------------------------------------------------------
@@ -170,8 +173,10 @@ begin
             paddle_left_y   => paddle_left_y_s,
             paddle_right_y  => paddle_right_y_s,
 
-            score           => score_s,
-            lives           => lives_s,
+            score_left      => score_left_s,
+            score_right     => score_right_s,
+            lives_left      => lives_left_s,
+            lives_right     => lives_right_s,
             game_state      => game_state_s
         );
 

@@ -43,9 +43,11 @@ entity game_logic is
         paddle_left_y : out integer;
         paddle_right_y: out integer;
 
-        score      : out integer;
-        lives      : out integer;
-        game_state : out std_logic_vector(1 downto 0)   -- 00=Welcome, 01=Playing, 10=Pause, 11=GameOver
+        score_left  : out integer;
+        score_right : out integer;
+        lives_left  : out integer;
+        lives_right : out integer;
+        game_state  : out std_logic_vector(1 downto 0)   -- 00=Welcome, 01=Playing, 10=Pause, 11=GameOver
     );
 end game_logic;
 
@@ -81,8 +83,10 @@ architecture Behavioral of game_logic is
     signal paddle_left_y_reg : integer := FRAME_HEIGHT/2 - PADDLE_HEIGHT/2;
     signal paddle_right_y_reg: integer := FRAME_HEIGHT/2 - PADDLE_HEIGHT/2;
 
-    signal score_reg : integer := 0;
-    signal lives_reg : integer := 3;
+    signal score_left_reg  : integer := 0;
+    signal score_right_reg : integer := 0;
+    signal lives_left_reg  : integer := 3;
+    signal lives_right_reg : integer := 3;
     signal state_reg : std_logic_vector(1 downto 0) := "01";  -- direct PLAYING
     
     signal tick_counter : unsigned(21 downto 0) := (others => '0');
@@ -117,8 +121,10 @@ begin
             paddle_right_y_reg<= FRAME_HEIGHT/2 - PADDLE_HEIGHT/2;
 
             -- Reset game parameters
-            score_reg <= 0;
-            lives_reg <= 3;
+            score_left_reg  <= 0;
+            score_right_reg <= 0;
+            lives_left_reg  <= 3;
+            lives_right_reg <= 3;
             state_reg <= "00";  -- WELCOME oder IDLE
 
             -- reset Tick
@@ -202,15 +208,35 @@ begin
                 end if;
                 
                 -- BALL AUS DEM FELD LINKS ODER RECHTS?
-                if ball_x_reg < 0 or ball_x_reg > FRAME_WIDTH then
+                if ball_x_reg < 0 then
 
-                -- Ball zurück in die Mitte
-                ball_x_reg <= BALL_START_X;
-                ball_y_reg <= BALL_START_Y;
+                    -- linkes Team verpasst -> Leben linke Seite -1
+                    if lives_left_reg > 0 then
+                        lives_left_reg <= lives_left_reg - 1;
+                    end if;
 
-                -- Geschwindigkeit neu setzen
-                ball_vx <= BALL_SPEED_X;  -- später zufällig
-                ball_vy <= BALL_SPEED_Y;
+                    -- Ball zurück in die Mitte
+                    ball_x_reg <= BALL_START_X;
+                    ball_y_reg <= BALL_START_Y;
+
+                    -- Geschwindigkeit neu setzen
+                    ball_vx <= BALL_SPEED_X;  
+                    ball_vy <= BALL_SPEED_Y;
+
+                elsif ball_x_reg > FRAME_WIDTH then
+
+                    -- rechtes Team verpasst -> Leben rechte Seite -1
+                    if lives_right_reg > 0 then
+                        lives_right_reg <= lives_right_reg - 1;
+                    end if;
+
+                    -- Ball zurück in die Mitte
+                    ball_x_reg <= BALL_START_X;
+                    ball_y_reg <= BALL_START_Y;
+
+                    -- Geschwindigkeit neu setzen
+                    ball_vx <= BALL_SPEED_X;  
+                    ball_vy <= BALL_SPEED_Y;
 
                 end if;
                 
@@ -234,6 +260,9 @@ begin
 
                 -- X-Richtung umdrehen (nach rechts)
                 ball_vx <= abs(ball_vx);
+
+                -- Score für linkes Paddle erhöhen
+                score_left_reg <= score_left_reg + 1;
 
                 -- Trefferposition bestimmen
                 paddle_center := paddle_left_y_reg + PADDLE_HEIGHT/2;
@@ -267,6 +296,9 @@ begin
 
         -- X-Richtung umdrehen (nach links)
         ball_vx <= -abs(ball_vx);
+
+        -- Score für rechtes Paddle erhöhen
+        score_right_reg <= score_right_reg + 1;
 
         -- Trefferposition bestimmen
         paddle_center := paddle_right_y_reg + PADDLE_HEIGHT/2;
@@ -320,9 +352,10 @@ end process;
     paddle_left_y <= paddle_left_y_reg;
     paddle_right_y<= paddle_right_y_reg;
 
-    score      <= score_reg;
-    lives      <= lives_reg;
-    game_state <= state_reg;
+    score_left  <= score_left_reg;
+    score_right <= score_right_reg;
+    lives_left  <= lives_left_reg;
+    lives_right <= lives_right_reg;
+    game_state  <= state_reg;
 
 end Behavioral;
-
