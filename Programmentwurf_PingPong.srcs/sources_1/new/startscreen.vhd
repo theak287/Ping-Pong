@@ -1,253 +1,123 @@
-----------------------------------------------------------------------------------
+--startscreen.vhd: ----------------------------------------------------------------------------------
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 19.11.2025 14:23:34
+-- Create Date: 20.11.2025
 -- Design Name: 
 -- Module Name: startscreen - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
 -- Description: 
--- 
--- Dependencies: 
--- 
+--   Creates the text overlay for the start screen.
+--   Displays:
+--       "WELCOME"
+--       "PRESS BTN0 TO START"
+--
+-- Dependencies:
+--   - font.vhd 
+--       provides FONT_ROM, TEXT_ROM,
+--       CHAR_WIDTH/HEIGHT, TEXT_COLS/ROWS,
+--       and global constants for text position and scale
+--
 -- Revision:
--- Revision 0.01 - File Created
+--   Revision 0.01 - File Created
+--
 -- Additional Comments:
--- 
+--   Instantiated inside renderer.vhd.
+--   Outputs only one signal: pixel_in_starttext
+--   (set to '1' when the current pixel belongs to the start screen text).
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+-- startscreen.vhd
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
-package startscreen is
+use work.font.all;
 
-  ----------------------------------------------------------------
-  -- Konstanten für Zeichensatz / Textbereich
-  ----------------------------------------------------------------
-  constant CHAR_WIDTH   : integer := 8;  -- Font-Breite (in Font-Pixeln)
-  constant CHAR_HEIGHT  : integer := 8;  -- Font-Höhe  (in Font-Pixeln)
+entity startscreen is
+    port (
+        clk               : in  std_logic;
+        pixel_x           : in  unsigned(11 downto 0);  -- current pixel X
+        pixel_y           : in  unsigned(11 downto 0);  -- current pixel Y
+        pixel_in_starttext: out std_logic               -- '1' if this pixel is part of start text
+    );
+end startscreen;
 
-  constant TEXT_COLS    : integer := 20; -- Zeichen pro Zeile
-  constant TEXT_ROWS    : integer := 4;  -- Anzahl Textzeilen
+architecture Behavioral of startscreen is
 
-  ----------------------------------------------------------------
-  -- Typen für Font-ROM und Text-ROM
-  ----------------------------------------------------------------
-  type glyph_t is array (0 to CHAR_HEIGHT-1) of std_logic_vector(CHAR_WIDTH-1 downto 0);
-  type font_t  is array (0 to 127) of glyph_t;  -- ASCII 0..127
+    signal pixel_in_starttext_next : std_logic := '0';
 
-  type text_line_t   is array (0 to TEXT_COLS-1) of std_logic_vector(7 downto 0);
-  type text_screen_t is array (0 to TEXT_ROWS-1) of text_line_t;
+begin
 
-  ----------------------------------------------------------------
-  -- Font-ROM: deine Buchstaben (wie in top.vhd)
-  ----------------------------------------------------------------
-  constant FONT_ROM : font_t := (
-    -- space (32)
-    32 => ( -- ' '
-      "00000000",
-      "00000000",
-      "00000000",
-      "00000000",
-      "00000000",
-      "00000000",
-      "00000000",
-      "00000000"
-    ),
+    ----------------------------------------------------------------
+    -- Kombinatorik: berechnet pixel_in_starttext_next
+    ----------------------------------------------------------------
+    process(pixel_x, pixel_y)
+        variable hx, vy          : integer;
+        variable rel_x, rel_y    : integer;
+        variable char_col        : integer;
+        variable char_row        : integer;
+        variable px_in_char      : integer;
+        variable py_in_char      : integer;
+        variable glyph_row       : std_logic_vector(CHAR_WIDTH-1 downto 0);
+        variable bit_index       : integer;
+        variable ch_code         : std_logic_vector(7 downto 0);
+        variable ascii_idx       : integer;
+    begin
+        pixel_in_starttext_next <= '0';
 
-    -- 'W' (87)
-    87 => (
-      "01000001",
-      "01000001",
-      "01000001",
-      "01001001",
-      "01010101",
-      "01100011",
-      "01000001",
-      "00000000"
-    ),
+        hx := to_integer(pixel_x);
+        vy := to_integer(pixel_y);
 
-    -- 'E' (69)
-    69 => (
-      "01111111",
-      "01000000",
-      "01000000",
-      "01111110",
-      "01000000",
-      "01000000",
-      "01111111",
-      "00000000"
-    ),
+        if (hx >= START_TEXT_X_START) and
+           (hx <  START_TEXT_X_START + TEXT_COLS * CHAR_WIDTH * START_TEXT_SCALE) and
+           (vy >= START_TEXT_Y_START) and
+           (vy <  START_TEXT_Y_START + TEXT_ROWS * CHAR_HEIGHT * START_TEXT_SCALE) then
 
-    -- 'L' (76)
-    76 => (
-      "01000000",
-      "01000000",
-      "01000000",
-      "01000000",
-      "01000000",
-      "01000000",
-      "01111111",
-      "00000000"
-    ),
+            rel_x := hx - START_TEXT_X_START;
+            rel_y := vy - START_TEXT_Y_START;
 
-    -- 'C' (67)
-    67 => (
-      "00111110",
-      "01000001",
-      "01000000",
-      "01000000",
-      "01000000",
-      "01000001",
-      "00111110",
-      "00000000"
-    ),
+            char_col := rel_x / (CHAR_WIDTH * START_TEXT_SCALE);
+            char_row := rel_y / (CHAR_HEIGHT * START_TEXT_SCALE);
 
-    -- 'O' (79)
-    79 => (
-      "00111110",
-      "01000001",
-      "01000001",
-      "01000001",
-      "01000001",
-      "01000001",
-      "00111110",
-      "00000000"
-    ),
+            if (char_col >= 0) and (char_col < TEXT_COLS) and
+               (char_row >= 0) and (char_row < TEXT_ROWS) then
 
-    -- 'M' (77)
-    77 => (
-      "01000001",
-      "01100011",
-      "01010101",
-      "01001001",
-      "01000001",
-      "01000001",
-      "01000001",
-      "00000000"
-    ),
+                px_in_char := (rel_x mod (CHAR_WIDTH * START_TEXT_SCALE)) / START_TEXT_SCALE;
+                py_in_char := (rel_y mod (CHAR_HEIGHT * START_TEXT_SCALE)) / START_TEXT_SCALE;
 
-    -- 'P' (80)
-    80 => (
-      "01111110",
-      "01000001",
-      "01000001",
-      "01111110",
-      "01000000",
-      "01000000",
-      "01000000",
-      "00000000"
-    ),
+                -- get character code from TEXT_ROM
+                ch_code := TEXT_ROM(char_row)(char_col);
+                ascii_idx := to_integer(unsigned(ch_code));
 
-    -- 'R' (82)
-    82 => (
-      "01111110",
-      "01000001",
-      "01000001",
-      "01111110",
-      "01001000",
-      "01000100",
-      "01000010",
-      "00000000"
-    ),
+                if (ascii_idx >= 0) and (ascii_idx <= 127) then
+                    glyph_row := FONT_ROM(ascii_idx)(py_in_char);
+                else
+                    glyph_row := (others => '0');
+                end if;
 
-    -- 'S' (83)
-    83 => (
-      "00111111",
-      "01000000",
-      "01000000",
-      "00111110",
-      "00000001",
-      "00000001",
-      "01111110",
-      "00000000"
-    ),
+                bit_index := CHAR_WIDTH - 1 - px_in_char;
 
-    -- 'B' (66)
-    66 => (
-      "01111110",
-      "01000001",
-      "01000001",
-      "01111110",
-      "01000001",
-      "01000001",
-      "01111110",
-      "00000000"
-    ),
+                if (bit_index >= 0) and (bit_index <= CHAR_WIDTH-1) then
+                    if glyph_row(bit_index) = '1' then
+                        pixel_in_starttext_next <= '1';
+                    end if;
+                end if;
+            end if;
+        end if;
+    end process;
 
-    -- 'T' (84)
-    84 => (
-      "01111111",
-      "00001000",
-      "00001000",
-      "00001000",
-      "00001000",
-      "00001000",
-      "00001000",
-      "00000000"
-    ),
+    ----------------------------------------------------------------
+    -- Registerstufe: stabiler, getakteter Output
+    ----------------------------------------------------------------
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            pixel_in_starttext <= pixel_in_starttext_next;
+        end if;
+    end process;
 
-    -- 'A' (65)
-    65 => (
-      "00011100",
-      "00100010",
-      "01000001",
-      "01000001",
-      "01111111",
-      "01000001",
-      "01000001",
-      "00000000"
-    ),
-
-    -- 'N' (78)
-    78 => (
-      "01000001",
-      "01100001",
-      "01010001",
-      "01001001",
-      "01000101",
-      "01000011",
-      "01000001",
-      "00000000"
-    ),
-
-    -- '0' (48)
-    48 => (
-      "00111110",
-      "01000011",
-      "01000101",
-      "01001001",
-      "01010001",
-      "01100001",
-      "00111110",
-      "00000000"
-    ),
-
-    -- default: alle anderen Zeichen leer
-    others => (
-      "00000000","00000000","00000000","00000000",
-      "00000000","00000000","00000000","00000000"
-    )
-  );
-
-  ----------------------------------------------------------------
-  -- Text-ROM: 4 Zeilen mit je 20 Zeichen (ASCII)
-  -- "WELCOME" oben, "PRESS BTN0 TO START" unten
-  ----------------------------------------------------------------
-  constant TEXT_ROM : text_screen_t := (
-    0 => (
-      x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"57", -- "       W"
-      x"45", x"4C", x"43", x"4F", x"4D", x"45", x"20", x"20", -- "ELCOME  "
-      x"20", x"20", x"20", x"20"                              -- "    "
-    ),
-    1 => ( others => x"20" ), -- Leerzeile
-    2 => (
-      x"20", x"50", x"52", x"45", x"53", x"53", x"20", x"42", -- " PRESS B"
-      x"54", x"4E", x"30", x"20", x"54", x"4F", x"20", x"53", -- "TN0 TO S"
-      x"54", x"41", x"52", x"54"                              -- "TART"
-    ),
-    3 => ( others => x"20" )
-  );
-
-end package startscreen;
+end Behavioral;

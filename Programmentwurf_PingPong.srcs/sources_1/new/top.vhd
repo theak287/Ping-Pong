@@ -1,4 +1,4 @@
-----------------------------------------------------------------------------------
+--top.vhd: ----------------------------------------------------------------------------------
 -- Company: 
 -- Engineer: 
 -- 
@@ -17,8 +17,9 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
-
+----------------------------------------------------------------------------------
+-- top.vhd (nur game_logic-Schnittstelle angepasst)
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -38,9 +39,6 @@ end top;
 
 architecture Behavioral of top is
 
-    ------------------------------------------------------
-    -- CLOCK WIZARD: 148.5 MHz Pixelclock
-    ------------------------------------------------------
     component clk_wiz_0
         port (
             CLK_IN1  : in  std_logic;
@@ -50,24 +48,19 @@ architecture Behavioral of top is
         );
     end component;
 
-    signal pxl_clk    : std_logic;
-    signal clk_locked : std_logic;
+    signal pxl_clk      : std_logic;
+    signal clk_locked   : std_logic;
+    signal reset_global : std_logic;
 
-    --------------------------------------------------------------------
-    -- VGA_SYNC
-    --------------------------------------------------------------------
     component vga_sync
         port (
-            clk      : in  std_logic;                -- Pixelclock (148.5 MHz)
+            clk      : in  std_logic;
             reset    : in  std_logic;
-
             hsync    : out std_logic;
             vsync    : out std_logic;
-
             active   : out std_logic;
-
-            pixel_x  : out unsigned(11 downto 0);    -- 0..1919
-            pixel_y  : out unsigned(11 downto 0)     -- 0..1079
+            pixel_x  : out unsigned(11 downto 0);
+            pixel_y  : out unsigned(11 downto 0)
         );
     end component;
 
@@ -82,23 +75,31 @@ architecture Behavioral of top is
         port (
             clk_game        : in  std_logic;
             reset           : in  std_logic;
-            btn             : in  std_logic_vector(3 downto 0);
+            game_enable     : in  std_logic;   
+            countdown_start : in  std_logic;               -- Startscreen → Countdown
+            BTN             : in  std_logic_vector(3 downto 0);
 
             ball_x          : out integer;
             ball_y          : out integer;
             paddle_left_y   : out integer;
             paddle_right_y  : out integer;
 
-            score           : out integer;
-            lives           : out integer;
-            game_state      : out std_logic_vector(1 downto 0)
+            score_left      : out integer;
+            score_right     : out integer;
+            lives_left      : out integer;
+            lives_right     : out integer;
+            game_state      : out std_logic_vector(1 downto 0);
+            
+            countdown_value  : out integer range 0 to 3;
+            countdown_active : out std_logic
         );
     end component;
 
-    signal ball_x_s, ball_y_s               : integer;
-    signal paddle_left_y_s, paddle_right_y_s: integer;
-    signal score_s, lives_s                 : integer;
-    signal game_state_s                     : std_logic_vector(1 downto 0);
+    signal ball_x_s, ball_y_s                : integer;
+    signal paddle_left_y_s, paddle_right_y_s : integer;
+    signal score_left_s, score_right_s       : integer;
+    signal lives_left_s, lives_right_s       : integer;
+    signal game_state_s                      : std_logic_vector(1 downto 0);
 
     --------------------------------------------------------------------
     -- RENDERER
@@ -110,30 +111,42 @@ architecture Behavioral of top is
             pixel_x     : in  unsigned(11 downto 0);
             pixel_y     : in  unsigned(11 downto 0);
 
-            -- Startscreen / Game Umschaltung
             game_running    : in  std_logic;
+            show_endscreen  : in  std_logic;
+            winner          : in  std_logic;
+                       
+            score_p1        : in  integer range 0 to 99;
+            score_p2        : in  integer range 0 to 99;
+            lives_p1        : in  integer range 0 to 3;
+            lives_p2        : in  integer range 0 to 3;
+            
+            countdown_active : in std_logic;
+            countdown_value  : in integer range 0 to 3;
 
-            -- Inputs from game_logic
             ball_x          : in integer;
             ball_y          : in integer;
             paddle_left_y   : in integer;
             paddle_right_y  : in integer;
 
-            -- VGA output
             vga_r : out std_logic_vector(3 downto 0);
             vga_g : out std_logic_vector(3 downto 0);
             vga_b : out std_logic_vector(3 downto 0)
         );
     end component;
 
-    -- Steuersignal für Startscreen / Spiel
-    signal game_running : std_logic := '0';
+    signal game_running      : std_logic := '0';
+    signal show_endscreen_s  : std_logic;
+    signal winner_s          : std_logic;
+    
+    signal countdown_value_s  : integer range 0 to 3;
+    signal countdown_active_s : std_logic;
+    signal countdown_start_s  : std_logic;
+
+    signal score_p1_hud      : integer range 0 to 99;
+    signal score_p2_hud      : integer range 0 to 99;
 
 begin
 
-    --------------------------------------------------------------------
-    -- CLOCK WIZARD
-    --------------------------------------------------------------------
     clk_inst : clk_wiz_0
         port map (
             CLK_IN1  => CLK_I,
@@ -142,13 +155,12 @@ begin
             LOCKED   => clk_locked
         );
 
-    --------------------------------------------------------------------
-    -- VGA_SYNC
-    --------------------------------------------------------------------
+    reset_global <= SW(0) or (not clk_locked);
+
     vga_inst : vga_sync
         port map (
             clk      => pxl_clk,
-            reset    => '0',        -- falls gewünscht: SW(0) hier benutzen
+            reset    => reset_global,
             hsync    => VGA_HS_O,
             vsync    => VGA_VS_O,
             active   => active_s,
@@ -156,59 +168,82 @@ begin
             pixel_y  => pixel_y
         );
 
-    --------------------------------------------------------------------
-    -- GAME LOGIC
-    --------------------------------------------------------------------
-    game_inst : game_logic
-        port map (
-            clk_game        => pxl_clk,
-            reset           => SW(0),   -- Reset über Schalter
-            btn             => BTN,
+game_inst : game_logic
+    port map (
+        clk_game        => pxl_clk,
+        reset           => reset_global,
+        game_enable     => game_running,
+        countdown_start => game_running, 
+        BTN             => BTN,
 
-            ball_x          => ball_x_s,
-            ball_y          => ball_y_s,
-            paddle_left_y   => paddle_left_y_s,
-            paddle_right_y  => paddle_right_y_s,
+        ball_x          => ball_x_s,
+        ball_y          => ball_y_s,
+        paddle_left_y   => paddle_left_y_s,
+        paddle_right_y  => paddle_right_y_s,
 
-            score           => score_s,
-            lives           => lives_s,
-            game_state      => game_state_s
-        );
+        score_left      => score_left_s,
+        score_right     => score_right_s,
+        lives_left      => lives_left_s,
+        lives_right     => lives_right_s,
+        game_state      => game_state_s,
 
-    --------------------------------------------------------------------
-    -- SPIEL STARTEN: BTN(0) startet, SW(0) resettet
-    --------------------------------------------------------------------
+        countdown_value  => countdown_value_s,
+        countdown_active => countdown_active_s
+    );
+
+
+    -- BTN0 startet die Anzeige / das Spiel
     process(pxl_clk)
     begin
         if rising_edge(pxl_clk) then
-            if SW(0) = '1' then
-                game_running <= '0';       -- Reset => zurück zum Startscreen
+            if reset_global = '1' then
+                game_running <= '0';
             elsif BTN(0) = '1' then
-                game_running <= '1';       -- BTN0 => Spiel starten
+                game_running <= '1';
             end if;
         end if;
     end process;
 
-    --------------------------------------------------------------------
-    -- RENDERER
-    --------------------------------------------------------------------
-    renderer_inst : renderer
-        port map (
-            clk         => pxl_clk,
-            active      => active_s,
-            pixel_x     => pixel_x,
-            pixel_y     => pixel_y,
+    -- Endscreen & Winner
+    show_endscreen_s <= '1' when (lives_left_s = 0) or (lives_right_s = 0) else '0';
 
-            game_running    => game_running,
+    winner_s <= '0' when (lives_left_s > 0 and lives_right_s = 0) else
+                '1' when (lives_right_s > 0 and lives_left_s = 0) else
+                '0';
 
-            ball_x          => ball_x_s,
-            ball_y          => ball_y_s,
-            paddle_left_y   => paddle_left_y_s,
-            paddle_right_y  => paddle_right_y_s,
+    -- Score clamping
+    score_p1_hud <= 99 when score_left_s  > 99 else score_left_s;
+    score_p2_hud <= 99 when score_right_s > 99 else score_right_s;
 
-            vga_r => VGA_R,
-            vga_g => VGA_G,
-            vga_b => VGA_B
-        );
+renderer_inst : renderer
+    port map (
+        clk         => pxl_clk,
+        active      => active_s,
+        pixel_x     => pixel_x,
+        pixel_y     => pixel_y,
+
+        game_running => game_running,
+        show_endscreen => show_endscreen_s,
+        winner         => winner_s,
+
+        score_p1 => score_p1_hud,
+        score_p2 => score_p2_hud,
+        lives_p1 => lives_left_s,
+        lives_p2 => lives_right_s,
+
+        countdown_value  => countdown_value_s,
+        countdown_active => countdown_active_s,
+
+        ball_x        => ball_x_s,
+        ball_y        => ball_y_s,
+        paddle_left_y => paddle_left_y_s,
+        paddle_right_y=> paddle_right_y_s,
+
+        vga_r => VGA_R,
+        vga_g => VGA_G,
+        vga_b => VGA_B
+    );
+
+
 
 end Behavioral;
