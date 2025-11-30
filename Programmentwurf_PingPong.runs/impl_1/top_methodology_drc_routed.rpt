@@ -1,0 +1,1137 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Sun Nov 30 17:04:49 2025
+| Host         : NB-TJ-01 running 64-bit major release  (build 9200)
+| Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
+| Design       : top
+| Device       : xc7a35ticsg324-1L
+| Speed File   : -1L
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max checks: <unlimited>
+             Checks found: 220
++-----------+------------------+------------------------------------------------------------------+--------+
+| Rule      | Severity         | Description                                                      | Checks |
++-----------+------------------+------------------------------------------------------------------+--------+
+| TIMING-6  | Critical Warning | No common primary clock between related clocks                   | 2      |
+| TIMING-16 | Warning          | Large setup violation                                            | 216    |
+| TIMING-56 | Warning          | Missing logically or physically excluded clock groups constraint | 2      |
++-----------+------------------+------------------------------------------------------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-6#1 Critical Warning
+No common primary clock between related clocks  
+The clocks clk_out1_clk_wiz_0 and clk_out1_clk_wiz_0_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_clk_wiz_0] -to [get_clocks clk_out1_clk_wiz_0_1]
+Related violations: <none>
+
+TIMING-6#2 Critical Warning
+No common primary clock between related clocks  
+The clocks clk_out1_clk_wiz_0_1 and clk_out1_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_clk_wiz_0_1] -to [get_clocks clk_out1_clk_wiz_0]
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.001 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[29]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.002 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[20]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.002 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[21]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -1.002 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[22]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -1.002 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[23]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -1.015 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[4]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -1.015 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[5]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -1.015 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[6]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -1.015 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[7]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -1.023 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[4]/S (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -1.023 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[5]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#12 Warning
+Large setup violation  
+There is a large setup violation of -1.023 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[6]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#13 Warning
+Large setup violation  
+There is a large setup violation of -1.023 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[7]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#14 Warning
+Large setup violation  
+There is a large setup violation of -1.048 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[12]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#15 Warning
+Large setup violation  
+There is a large setup violation of -1.048 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[13]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#16 Warning
+Large setup violation  
+There is a large setup violation of -1.048 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[15]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#17 Warning
+Large setup violation  
+There is a large setup violation of -1.048 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[30]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#18 Warning
+Large setup violation  
+There is a large setup violation of -1.051 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[23]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#19 Warning
+Large setup violation  
+There is a large setup violation of -1.061 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[20]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#20 Warning
+Large setup violation  
+There is a large setup violation of -1.061 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[21]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#21 Warning
+Large setup violation  
+There is a large setup violation of -1.061 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[22]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#22 Warning
+Large setup violation  
+There is a large setup violation of -1.072 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[21]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#23 Warning
+Large setup violation  
+There is a large setup violation of -1.075 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[24]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#24 Warning
+Large setup violation  
+There is a large setup violation of -1.078 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[16]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#25 Warning
+Large setup violation  
+There is a large setup violation of -1.078 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[17]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#26 Warning
+Large setup violation  
+There is a large setup violation of -1.078 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[18]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#27 Warning
+Large setup violation  
+There is a large setup violation of -1.078 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[19]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#28 Warning
+Large setup violation  
+There is a large setup violation of -1.091 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[26]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#29 Warning
+Large setup violation  
+There is a large setup violation of -1.126 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[31]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#30 Warning
+Large setup violation  
+There is a large setup violation of -1.133 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[10]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#31 Warning
+Large setup violation  
+There is a large setup violation of -1.133 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[11]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#32 Warning
+Large setup violation  
+There is a large setup violation of -1.133 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[8]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#33 Warning
+Large setup violation  
+There is a large setup violation of -1.133 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[9]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#34 Warning
+Large setup violation  
+There is a large setup violation of -1.135 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[0]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#35 Warning
+Large setup violation  
+There is a large setup violation of -1.135 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[1]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#36 Warning
+Large setup violation  
+There is a large setup violation of -1.135 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[2]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#37 Warning
+Large setup violation  
+There is a large setup violation of -1.135 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/score_r_reg[3]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#38 Warning
+Large setup violation  
+There is a large setup violation of -1.145 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[16]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#39 Warning
+Large setup violation  
+There is a large setup violation of -1.145 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[17]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#40 Warning
+Large setup violation  
+There is a large setup violation of -1.145 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[18]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#41 Warning
+Large setup violation  
+There is a large setup violation of -1.145 ns between game_inst/restart_counter_reg[3]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_x_reg_reg[19]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#42 Warning
+Large setup violation  
+There is a large setup violation of -1.163 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[20]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#43 Warning
+Large setup violation  
+There is a large setup violation of -1.163 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[28]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#44 Warning
+Large setup violation  
+There is a large setup violation of -1.163 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[30]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#45 Warning
+Large setup violation  
+There is a large setup violation of -1.163 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[9]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#46 Warning
+Large setup violation  
+There is a large setup violation of -1.165 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[27]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#47 Warning
+Large setup violation  
+There is a large setup violation of -1.184 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[20]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#48 Warning
+Large setup violation  
+There is a large setup violation of -1.184 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[28]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#49 Warning
+Large setup violation  
+There is a large setup violation of -1.184 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[30]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#50 Warning
+Large setup violation  
+There is a large setup violation of -1.184 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[9]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#51 Warning
+Large setup violation  
+There is a large setup violation of -1.186 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[25]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#52 Warning
+Large setup violation  
+There is a large setup violation of -1.188 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[28]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#53 Warning
+Large setup violation  
+There is a large setup violation of -1.192 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[29]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#54 Warning
+Large setup violation  
+There is a large setup violation of -1.204 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[14]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#55 Warning
+Large setup violation  
+There is a large setup violation of -1.204 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[16]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#56 Warning
+Large setup violation  
+There is a large setup violation of -1.204 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[17]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#57 Warning
+Large setup violation  
+There is a large setup violation of -1.204 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[27]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#58 Warning
+Large setup violation  
+There is a large setup violation of -1.204 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[30]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#59 Warning
+Large setup violation  
+There is a large setup violation of -1.209 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[10]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#60 Warning
+Large setup violation  
+There is a large setup violation of -1.209 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[23]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#61 Warning
+Large setup violation  
+There is a large setup violation of -1.209 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[24]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#62 Warning
+Large setup violation  
+There is a large setup violation of -1.212 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[11]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#63 Warning
+Large setup violation  
+There is a large setup violation of -1.212 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[2]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#64 Warning
+Large setup violation  
+There is a large setup violation of -1.212 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[6]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#65 Warning
+Large setup violation  
+There is a large setup violation of -1.214 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[25]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#66 Warning
+Large setup violation  
+There is a large setup violation of -1.220 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[10]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#67 Warning
+Large setup violation  
+There is a large setup violation of -1.220 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[23]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#68 Warning
+Large setup violation  
+There is a large setup violation of -1.220 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[24]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#69 Warning
+Large setup violation  
+There is a large setup violation of -1.236 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[19]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#70 Warning
+Large setup violation  
+There is a large setup violation of -1.236 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[4]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#71 Warning
+Large setup violation  
+There is a large setup violation of -1.236 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[6]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#72 Warning
+Large setup violation  
+There is a large setup violation of -1.236 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[7]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#73 Warning
+Large setup violation  
+There is a large setup violation of -1.239 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[11]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#74 Warning
+Large setup violation  
+There is a large setup violation of -1.239 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[12]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#75 Warning
+Large setup violation  
+There is a large setup violation of -1.239 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[15]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#76 Warning
+Large setup violation  
+There is a large setup violation of -1.239 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[23]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#77 Warning
+Large setup violation  
+There is a large setup violation of -1.243 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[14]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#78 Warning
+Large setup violation  
+There is a large setup violation of -1.243 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[18]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#79 Warning
+Large setup violation  
+There is a large setup violation of -1.243 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[26]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#80 Warning
+Large setup violation  
+There is a large setup violation of -1.243 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[8]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#81 Warning
+Large setup violation  
+There is a large setup violation of -1.252 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[15]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#82 Warning
+Large setup violation  
+There is a large setup violation of -1.252 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[7]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#83 Warning
+Large setup violation  
+There is a large setup violation of -1.252 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[8]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#84 Warning
+Large setup violation  
+There is a large setup violation of -1.278 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[31]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#85 Warning
+Large setup violation  
+There is a large setup violation of -1.299 ns between game_inst/ball_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_y_reg_reg[29]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#86 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[12]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#87 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[21]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#88 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[3]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#89 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[4]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#90 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[24]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#91 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[25]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#92 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[26]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#93 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[27]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#94 Warning
+Large setup violation  
+There is a large setup violation of -1.316 ns between game_inst/paddle_left_y_reg_reg[31]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/paddle_left_y_reg_reg[6]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#95 Warning
+Large setup violation  
+There is a large setup violation of -1.316 ns between game_inst/paddle_left_y_reg_reg[31]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/paddle_left_y_reg_reg[9]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#96 Warning
+Large setup violation  
+There is a large setup violation of -1.323 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[28]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#97 Warning
+Large setup violation  
+There is a large setup violation of -1.323 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[29]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#98 Warning
+Large setup violation  
+There is a large setup violation of -1.323 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[30]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#99 Warning
+Large setup violation  
+There is a large setup violation of -1.323 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[31]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#100 Warning
+Large setup violation  
+There is a large setup violation of -1.331 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[18]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#101 Warning
+Large setup violation  
+There is a large setup violation of -1.331 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[19]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#102 Warning
+Large setup violation  
+There is a large setup violation of -1.331 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[1]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#103 Warning
+Large setup violation  
+There is a large setup violation of -1.331 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[31]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#104 Warning
+Large setup violation  
+There is a large setup violation of -1.343 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[18]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#105 Warning
+Large setup violation  
+There is a large setup violation of -1.343 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[19]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#106 Warning
+Large setup violation  
+There is a large setup violation of -1.343 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[1]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#107 Warning
+Large setup violation  
+There is a large setup violation of -1.343 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[31]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#108 Warning
+Large setup violation  
+There is a large setup violation of -1.349 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[2]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#109 Warning
+Large setup violation  
+There is a large setup violation of -1.350 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[14]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#110 Warning
+Large setup violation  
+There is a large setup violation of -1.350 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[16]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#111 Warning
+Large setup violation  
+There is a large setup violation of -1.350 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[17]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#112 Warning
+Large setup violation  
+There is a large setup violation of -1.350 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[27]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#113 Warning
+Large setup violation  
+There is a large setup violation of -1.352 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[13]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#114 Warning
+Large setup violation  
+There is a large setup violation of -1.352 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[22]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#115 Warning
+Large setup violation  
+There is a large setup violation of -1.352 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[26]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#116 Warning
+Large setup violation  
+There is a large setup violation of -1.352 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[5]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#117 Warning
+Large setup violation  
+There is a large setup violation of -1.352 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/ball_vx_reg[1]/D (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#118 Warning
+Large setup violation  
+There is a large setup violation of -1.359 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[13]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#119 Warning
+Large setup violation  
+There is a large setup violation of -1.359 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[25]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#120 Warning
+Large setup violation  
+There is a large setup violation of -1.373 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[5]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#121 Warning
+Large setup violation  
+There is a large setup violation of -1.373 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[13]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#122 Warning
+Large setup violation  
+There is a large setup violation of -1.373 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[22]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#123 Warning
+Large setup violation  
+There is a large setup violation of -1.373 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[26]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#124 Warning
+Large setup violation  
+There is a large setup violation of -1.373 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[5]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#125 Warning
+Large setup violation  
+There is a large setup violation of -1.376 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[16]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#126 Warning
+Large setup violation  
+There is a large setup violation of -1.376 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[29]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#127 Warning
+Large setup violation  
+There is a large setup violation of -1.376 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[9]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#128 Warning
+Large setup violation  
+There is a large setup violation of -1.378 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[10]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#129 Warning
+Large setup violation  
+There is a large setup violation of -1.378 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[11]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#130 Warning
+Large setup violation  
+There is a large setup violation of -1.378 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[8]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#131 Warning
+Large setup violation  
+There is a large setup violation of -1.378 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[9]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#132 Warning
+Large setup violation  
+There is a large setup violation of -1.379 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[16]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#133 Warning
+Large setup violation  
+There is a large setup violation of -1.379 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[17]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#134 Warning
+Large setup violation  
+There is a large setup violation of -1.379 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[18]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#135 Warning
+Large setup violation  
+There is a large setup violation of -1.379 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[19]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#136 Warning
+Large setup violation  
+There is a large setup violation of -1.391 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[10]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#137 Warning
+Large setup violation  
+There is a large setup violation of -1.391 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[22]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#138 Warning
+Large setup violation  
+There is a large setup violation of -1.391 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[24]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#139 Warning
+Large setup violation  
+There is a large setup violation of -1.393 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[15]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#140 Warning
+Large setup violation  
+There is a large setup violation of -1.393 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[7]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#141 Warning
+Large setup violation  
+There is a large setup violation of -1.393 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[8]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#142 Warning
+Large setup violation  
+There is a large setup violation of -1.395 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[27]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#143 Warning
+Large setup violation  
+There is a large setup violation of -1.395 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[28]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#144 Warning
+Large setup violation  
+There is a large setup violation of -1.395 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[30]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#145 Warning
+Large setup violation  
+There is a large setup violation of -1.419 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[17]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#146 Warning
+Large setup violation  
+There is a large setup violation of -1.419 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[20]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#147 Warning
+Large setup violation  
+There is a large setup violation of -1.419 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[21]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#148 Warning
+Large setup violation  
+There is a large setup violation of -1.420 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/b_reg_reg[3]_lopt_replica_3/D (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#149 Warning
+Large setup violation  
+There is a large setup violation of -1.441 ns between game_inst/paddle_right_y_reg_reg[3]/C (clocked by clk_out1_clk_wiz_0_1) and game_inst/ball_vx_reg[2]/D (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#150 Warning
+Large setup violation  
+There is a large setup violation of -1.444 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[3]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#151 Warning
+Large setup violation  
+There is a large setup violation of -1.458 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[12]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#152 Warning
+Large setup violation  
+There is a large setup violation of -1.458 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[13]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#153 Warning
+Large setup violation  
+There is a large setup violation of -1.458 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[14]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#154 Warning
+Large setup violation  
+There is a large setup violation of -1.458 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[15]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#155 Warning
+Large setup violation  
+There is a large setup violation of -1.463 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[20]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#156 Warning
+Large setup violation  
+There is a large setup violation of -1.463 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[21]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#157 Warning
+Large setup violation  
+There is a large setup violation of -1.463 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[22]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#158 Warning
+Large setup violation  
+There is a large setup violation of -1.463 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[23]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#159 Warning
+Large setup violation  
+There is a large setup violation of -1.489 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[4]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#160 Warning
+Large setup violation  
+There is a large setup violation of -1.489 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[5]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#161 Warning
+Large setup violation  
+There is a large setup violation of -1.489 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[6]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#162 Warning
+Large setup violation  
+There is a large setup violation of -1.489 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[7]/CE (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#163 Warning
+Large setup violation  
+There is a large setup violation of -1.491 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[12]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#164 Warning
+Large setup violation  
+There is a large setup violation of -1.491 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[21]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#165 Warning
+Large setup violation  
+There is a large setup violation of -1.491 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[3]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#166 Warning
+Large setup violation  
+There is a large setup violation of -1.491 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[4]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#167 Warning
+Large setup violation  
+There is a large setup violation of -1.518 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[0]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#168 Warning
+Large setup violation  
+There is a large setup violation of -1.518 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[1]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#169 Warning
+Large setup violation  
+There is a large setup violation of -1.518 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[2]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#170 Warning
+Large setup violation  
+There is a large setup violation of -1.518 ns between game_inst/paddle_left_y_reg_reg[2]/C (clocked by clk_out1_clk_wiz_0) and game_inst/score_l_reg[3]/CE (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#171 Warning
+Large setup violation  
+There is a large setup violation of -1.547 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[11]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#172 Warning
+Large setup violation  
+There is a large setup violation of -1.547 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[6]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#173 Warning
+Large setup violation  
+There is a large setup violation of -1.549 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vy_reg[25]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#174 Warning
+Large setup violation  
+There is a large setup violation of -1.878 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/b_reg_reg[3]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#175 Warning
+Large setup violation  
+There is a large setup violation of -2.008 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[14]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#176 Warning
+Large setup violation  
+There is a large setup violation of -2.008 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[18]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#177 Warning
+Large setup violation  
+There is a large setup violation of -2.008 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[26]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#178 Warning
+Large setup violation  
+There is a large setup violation of -2.008 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[8]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#179 Warning
+Large setup violation  
+There is a large setup violation of -2.033 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/b_reg_reg[3]_lopt_replica_2/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#180 Warning
+Large setup violation  
+There is a large setup violation of -2.041 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/b_reg_reg[3]_lopt_replica/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#181 Warning
+Large setup violation  
+There is a large setup violation of -2.108 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[11]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#182 Warning
+Large setup violation  
+There is a large setup violation of -2.108 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[12]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#183 Warning
+Large setup violation  
+There is a large setup violation of -2.108 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[15]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#184 Warning
+Large setup violation  
+There is a large setup violation of -2.108 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[23]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#185 Warning
+Large setup violation  
+There is a large setup violation of -2.138 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[10]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#186 Warning
+Large setup violation  
+There is a large setup violation of -2.138 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[22]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#187 Warning
+Large setup violation  
+There is a large setup violation of -2.138 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[24]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#188 Warning
+Large setup violation  
+There is a large setup violation of -2.140 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[5]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#189 Warning
+Large setup violation  
+There is a large setup violation of -2.146 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[17]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#190 Warning
+Large setup violation  
+There is a large setup violation of -2.146 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[20]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#191 Warning
+Large setup violation  
+There is a large setup violation of -2.146 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[21]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#192 Warning
+Large setup violation  
+There is a large setup violation of -2.147 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[19]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#193 Warning
+Large setup violation  
+There is a large setup violation of -2.147 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[4]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#194 Warning
+Large setup violation  
+There is a large setup violation of -2.147 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[6]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#195 Warning
+Large setup violation  
+There is a large setup violation of -2.147 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[7]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#196 Warning
+Large setup violation  
+There is a large setup violation of -2.174 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[3]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#197 Warning
+Large setup violation  
+There is a large setup violation of -2.233 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/g_reg_reg[3]_lopt_replica_3/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#198 Warning
+Large setup violation  
+There is a large setup violation of -2.286 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[16]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#199 Warning
+Large setup violation  
+There is a large setup violation of -2.286 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[29]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#200 Warning
+Large setup violation  
+There is a large setup violation of -2.286 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[9]/R (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#201 Warning
+Large setup violation  
+There is a large setup violation of -2.321 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[27]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#202 Warning
+Large setup violation  
+There is a large setup violation of -2.321 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[28]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#203 Warning
+Large setup violation  
+There is a large setup violation of -2.321 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[30]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#204 Warning
+Large setup violation  
+There is a large setup violation of -2.395 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/g_reg_reg[3]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#205 Warning
+Large setup violation  
+There is a large setup violation of -2.403 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/g_reg_reg[3]_lopt_replica/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#206 Warning
+Large setup violation  
+There is a large setup violation of -2.407 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[13]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#207 Warning
+Large setup violation  
+There is a large setup violation of -2.407 ns between game_inst/ball_x_reg_reg[1]/C (clocked by clk_out1_clk_wiz_0) and game_inst/ball_vx_reg[25]/R (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#208 Warning
+Large setup violation  
+There is a large setup violation of -2.572 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/g_reg_reg[3]_lopt_replica_2/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#209 Warning
+Large setup violation  
+There is a large setup violation of -2.721 ns between vga_inst/h_count_reg[6]/C (clocked by clk_out1_clk_wiz_0_1) and renderer_inst/score_inst/pixel_in_score_reg/D (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#210 Warning
+Large setup violation  
+There is a large setup violation of -2.723 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/r_reg_reg[3]_lopt_replica_3/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#211 Warning
+Large setup violation  
+There is a large setup violation of -2.730 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/r_reg_reg[3]_lopt_replica_2/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#212 Warning
+Large setup violation  
+There is a large setup violation of -2.734 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/r_reg_reg[3]/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#213 Warning
+Large setup violation  
+There is a large setup violation of -2.739 ns between vga_inst/v_count_reg[5]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/r_reg_reg[3]_lopt_replica/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#214 Warning
+Large setup violation  
+There is a large setup violation of -2.919 ns between vga_inst/h_count_reg[9]/C (clocked by clk_out1_clk_wiz_0_1) and renderer_inst/countdown_inst/pixel_in_countdown_reg/D (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#215 Warning
+Large setup violation  
+There is a large setup violation of -3.637 ns between vga_inst/h_count_reg[6]/C (clocked by clk_out1_clk_wiz_0_1) and renderer_inst/startscreen_inst/pixel_in_starttext_reg/D (clocked by clk_out1_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#216 Warning
+Large setup violation  
+There is a large setup violation of -4.401 ns between vga_inst/v_count_reg[2]_replica/C (clocked by clk_out1_clk_wiz_0) and renderer_inst/endscreen_inst/pixel_in_endtext_reg/D (clocked by clk_out1_clk_wiz_0_1). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-56#1 Warning
+Missing logically or physically excluded clock groups constraint  
+Multiple clocks are user generated or auto-derived on the source pin clk_inst/inst/mmcm_adv_inst/CLKFBOUT but are not logically or physically exclusive with respect to one another. To have the static timing analysis match the behavior in hardware, there cannot be multiple clocks generated on the same pin and when such situation occurs, the clocks should be defined as physically or logically exclusive. The list of clocks generated on the source pin is: clkfbout_clk_wiz_0, clkfbout_clk_wiz_0_1
+Related violations: <none>
+
+TIMING-56#2 Warning
+Missing logically or physically excluded clock groups constraint  
+Multiple clocks are user generated or auto-derived on the source pin clk_inst/inst/mmcm_adv_inst/CLKOUT0 but are not logically or physically exclusive with respect to one another. To have the static timing analysis match the behavior in hardware, there cannot be multiple clocks generated on the same pin and when such situation occurs, the clocks should be defined as physically or logically exclusive. The list of clocks generated on the source pin is: clk_out1_clk_wiz_0, clk_out1_clk_wiz_0_1
+Related violations: <none>
+
+

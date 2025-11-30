@@ -1,24 +1,42 @@
---top.vhd: ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+----------------------------------------------------------------------------------
+-- Company: DHBW Ravensburg
+-- Engineer: Thea Karwowski, Pauline Barmettler, Sanley Aytacer
 -- 
 -- Create Date: 17.11.2025 18:01:44
--- Design Name: 
+-- Design Name: FPGA Pong Game - Top Level
 -- Module Name: top - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Project Name: Pingpong
+-- Target Devices: Arty A7-35
+-- Tool Versions: 2025.1
 -- Description: 
--- 
+--   Top-level module of the Pong project. Instantiates clock wizard, VGA timing
+--   (vga_sync), game logic (game_logic) and the renderer. Connects board
+--   buttons, switches and VGA signals and wires all submodules together.
+--
 -- Dependencies: 
--- 
+--   - clk_wiz_0 (Xilinx IP)
+--   - vga_sync.vhd
+--   - game_pkg.vhd
+--   - game_logic.vhd
+--   - font.vhd
+--   - startscreen.vhd
+--   - endscreen.vhd
+--   - score.vhd
+--   - countdown.vhd
+--   - renderer.vhd
+--
 -- Revision:
--- Revision 0.01 - File Created
+--   Revision 0.01 - File Created
+--   Revision 0.02 - Integrated game_logic, renderer and HUD
+--   Revision 0.03 - Added countdown interface and endscreen wiring
+--
 -- Additional Comments:
--- 
+--   This file defines the external interface to the FPGA board (clock, buttons,
+--   switches and VGA output) and is the entry point for synthesis.
 ----------------------------------------------------------------------------------
+
 ----------------------------------------------------------------------------------
--- top.vhd (nur game_logic-Schnittstelle angepasst)
+-- top.vhd 
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -192,7 +210,7 @@ game_inst : game_logic
     );
 
 
-    -- BTN0 startet die Anzeige / das Spiel
+    -- BTN0 starts the Game
     process(pxl_clk)
     begin
         if rising_edge(pxl_clk) then

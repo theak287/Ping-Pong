@@ -1,22 +1,31 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: DHBW Ravensburg
+-- Engineer: Sanley Aytacer
 -- 
 -- Create Date: 17.11.2025 18:00:19
--- Design Name: 
+-- Design Name: VGA Timing Generator 1920x1080@60Hz
 -- Module Name: vga_sync - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Project Name: Pingpong
+-- Target Devices: Arty A7-35
+-- Tool Versions: 2025.1
 -- Description: 
--- 
+--   Generates horizontal and vertical sync signals, active-video region and
+--   current pixel coordinates for 1920x1080@60Hz based on a 148.5 MHz pixel
+--   clock. Used as the timing base for all rendering.
+--
 -- Dependencies: 
--- 
+--   - IEEE.STD_LOGIC_1164
+--   - IEEE.NUMERIC_STD
+--
 -- Revision:
--- Revision 0.01 - File Created
+--   Revision 0.01 - File Created
+--   Revision 0.02 - Adapted timing parameters for 1080p
+--
 -- Additional Comments:
--- 
+--   The module outputs pixel_x and pixel_y counters that are used by the
+--   renderer, startscreen, endscreen, score and countdown modules.
 ----------------------------------------------------------------------------------
+
 
 
 library IEEE;

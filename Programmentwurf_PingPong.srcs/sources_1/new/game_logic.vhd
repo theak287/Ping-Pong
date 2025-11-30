@@ -1,24 +1,42 @@
---game_logic.vhd: ---------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+----------------------------------------------------------------------------------
+-- Company: DHBW Ravensburg
+-- Engineer: Thea Karwowski, Sanley Aytacer
 -- 
 -- Create Date: 17.11.2025 18:00:19
--- Design Name: 
+-- Design Name: Pong Game Logic
 -- Module Name: game_logic - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Project Name: Pingpong
+-- Target Devices: Arty A7-35
+-- Tool Versions: 2025.1
 -- Description: 
--- 
+--   Implements the complete game behavior of Pong:
+--     - tick generation for game updates
+--     - paddle movement via buttons with clamping
+--     - ball movement based on velocity vector (vx, vy)
+--     - collision handling with top/bottom walls
+--     - collision handling with both paddles
+--     - score and lives management for both players
+--     - countdown phase after each miss
+--     - reset behavior and game state output
+--
 -- Dependencies: 
--- 
+--   - IEEE.STD_LOGIC_1164
+--   - IEEE.NUMERIC_STD
+--   - game_pkg.vhd
+--
 -- Revision:
--- Revision 0.01 - File Created
+--   Revision 0.01 - File Created
+--   Revision 0.02 - Added paddle/ball collision and scoring
+--   Revision 0.03 - Added lives and game over logic
+--   Revision 0.04 - Added countdown delay after miss (countdown_active/value)
+--
 -- Additional Comments:
--- 
+--   All physics and game rules are implemented here. The renderer only draws
+--   the current state; no game logic is inside the renderer.
 ----------------------------------------------------------------------------------
+
 ----------------------------------------------------------------------------------
--- GAME LOGIC (mit Start-/Restart-Countdown und Game-Over-Freeze)
+-- GAME LOGIC 
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -30,8 +48,8 @@ entity game_logic is
     port (
         clk_game        : in  std_logic;
         reset           : in  std_logic;
-        game_enable     : in  std_logic;               -- aus top: game_running
-        countdown_start : in  std_logic;               -- ebenfalls game_running
+        game_enable     : in  std_logic;               
+        countdown_start : in  std_logic;              
         BTN             : in  std_logic_vector(3 downto 0);
 
         ball_x          : out integer;
@@ -48,14 +66,14 @@ entity game_logic is
         game_state      : out std_logic_vector(1 downto 0);  -- 00=Welcome,10=Countdown,01=Play,11=GameOver
 
         countdown_value  : out integer range 0 to 3;          -- 3,2,1,0
-        countdown_active : out std_logic                      -- '1' = Countdown sichtbar
+        countdown_active : out std_logic                      -- '1' = Countdown visible
     );
 end entity;
 
 architecture Behavioral of game_logic is
 
     --------------------------------------------------------------------
-    -- interne Register
+    -- internal Register
     --------------------------------------------------------------------
     -- Ball
     signal ball_x_reg : integer := BALL_START_X;
@@ -84,12 +102,11 @@ architecture Behavioral of game_logic is
     signal tick_counter : unsigned(21 downto 0) := (others => '0');
     signal game_tick    : std_logic := '0';
 
-    -- Countdown-Logik
-    signal restart_counter      : integer := 0;                    -- Zähler in Ticks
+    -- Countdown-Logic
+    signal restart_counter      : integer := 0;                    
     signal countdown_active_reg : std_logic := '0';
     signal countdown_val_reg    : integer range 0 to 3 := 0;
 
-    -- um zu erkennen, dass das Spiel zum ersten Mal gestartet wurde
     signal started_once : std_logic := '0';
 
 begin
@@ -149,18 +166,17 @@ begin
                 game_state_reg <= "00";
 
             --------------------------------------------------------------------
-            -- KEIN RESET → Logik pro Tick
+            -- NO RESET → Logic per Tick
             --------------------------------------------------------------------
             elsif game_tick = '1' then
 
                 ----------------------------------------------------------------
-                -- FALL 1: SPIEL NOCH NICHT GESTARTET (Startscreen)
+                -- CASE 1: GAME NOT STARTED YET (Startscreen)
                 ----------------------------------------------------------------
                 if game_enable = '0' then
-                    -- Wir sind im WELCOME-STATE
+                
                     game_state_reg <= "00";
 
-                    -- Alles in Ausgangsposition halten
                     ball_x_reg <= BALL_START_X;
                     ball_y_reg <= BALL_START_Y;
                     ball_vx    <= 0;
@@ -169,16 +185,16 @@ begin
                     paddle_left_y_reg  <= FRAME_HEIGHT/2 - PADDLE_HEIGHT/2;
                     paddle_right_y_reg <= FRAME_HEIGHT/2 - PADDLE_HEIGHT/2;
 
-                    -- Countdown aus
+                    -- Countdown off
                     restart_counter      <= 0;
                     countdown_active_reg <= '0';
                     countdown_val_reg    <= 0;
 
-                    -- „Start" darf später wieder erkannt werden
+
                     started_once <= '0';
 
                 ----------------------------------------------------------------
-                -- FALL 2: SPIEL GESTARTET (game_enable = '1')
+                -- CASE 2: GAME STARTED (game_enable = '1')
                 ----------------------------------------------------------------
                 else
 
@@ -189,7 +205,7 @@ begin
                         -- GAME OVER STATE
                         game_state_reg <= "11";
 
-                        -- alles einfrieren und in Startposition legen
+                        -- freeze everything and set into start positions
                         ball_x_reg <= BALL_START_X;
                         ball_y_reg <= BALL_START_Y;
                         ball_vx    <= 0;
@@ -198,22 +214,22 @@ begin
                         paddle_left_y_reg  <= FRAME_HEIGHT/2 - PADDLE_HEIGHT/2;
                         paddle_right_y_reg <= FRAME_HEIGHT/2 - PADDLE_HEIGHT/2;
 
-                        -- Countdown komplett aus
+                        -- Countdown off
                         restart_counter      <= 0;
                         countdown_active_reg <= '0';
                         countdown_val_reg    <= 0;
 
                     ----------------------------------------------------------------
-                    -- 2b) SPIEL LAUFEND, LEBEN > 0
+                    -- 2b) GAME RUNNING, LIVES > 0
                     ----------------------------------------------------------------
                     else
                         ----------------------------------------------------------------
-                        -- ERSTER START NACH WELCOME → COUNTDOWN INITIALISIEREN
+                        -- FIRST START  → INITIALIZE COUNTDOWN
                         ----------------------------------------------------------------
                         if (started_once = '0') and (countdown_start = '1') then
                             restart_counter   <= COUNTDOWN_TICKS;  -- z.B. 90
                             started_once      <= '1';
-                            -- Ball in Mitte, Startschnelligkeit setzen
+                           
                             ball_x_reg <= BALL_START_X;
                             ball_y_reg <= BALL_START_Y;
                             ball_vx    <= BALL_SPEED_X;
@@ -221,13 +237,13 @@ begin
                         end if;
 
                         ----------------------------------------------------------------
-                        -- COUNTDOWN-PHASE (nach Start oder Miss)
+                        -- COUNTDOWN-PHASE 
                         ----------------------------------------------------------------
                         if restart_counter > 0 then
                             game_state_reg      <= "10";           -- Countdown
                             countdown_active_reg <= '1';
 
-                            -- 3,2,1 aus Ticks ableiten (einfach in 3 Drittel teilen)
+                            -- Get Tick from game_tick (divide by 3)
                             if restart_counter > (2*COUNTDOWN_TICKS)/3 then
                                 countdown_val_reg <= 3;
                             elsif restart_counter > (COUNTDOWN_TICKS)/3 then
@@ -236,17 +252,14 @@ begin
                                 countdown_val_reg <= 1;
                             end if;
 
-                            -- Counter runterzählen
+                            -- decrement Counter
                             restart_counter <= restart_counter - 1;
 
-                            -- Ball in Mitte halten, Richtung vorbereiten
+                            -- hold ball in the middle, prepare direction
                             ball_x_reg <= BALL_START_X;
                             ball_y_reg <= BALL_START_Y;
-                            -- ball_vx, ball_vy bleiben, aber keine echte Bewegung
 
-                            ----------------------------------------------------------------
-                            -- Du KANNST während des Countdowns die Paddles bewegen:
-                            ----------------------------------------------------------------
+
                             if BTN(0) = '1' then
                                 paddle_right_y_reg <= paddle_right_y_reg - PADDLE_SPEED;
                             elsif BTN(1) = '1' then
@@ -273,32 +286,29 @@ begin
                             end if;
 
                         ----------------------------------------------------------------
-                        -- NORMALE SPIEL-PHASE (PLAY STATE)
+                        -- NORMAL GAMEING-PHASE (PLAY STATE)
                         ----------------------------------------------------------------
                         else
                             game_state_reg      <= "01";   -- PLAY
                             countdown_active_reg <= '0';
                             countdown_val_reg    <= 0;
 
-                            ------------------------------------------------------------
-                            -- FALLS BALL NOCH „tot" ist (z.B. nach Reset) → Startvektor
-                            ------------------------------------------------------------
                             if (ball_vx = 0) and (ball_vy = 0) then
                                 ball_vx <= BALL_SPEED_X;
                                 ball_vy <= BALL_SPEED_Y;
                             end if;
 
                             ------------------------------------------------------------
-                            -- PADDLE STEUERUNG
+                            -- PADDLE CONTROLS
                             ------------------------------------------------------------
-                            -- Rechtes Paddle
+                            -- Right Paddle
                             if BTN(0) = '1' then
                                 paddle_right_y_reg <= paddle_right_y_reg - PADDLE_SPEED;
                             elsif BTN(1) = '1' then
                                 paddle_right_y_reg <= paddle_right_y_reg + PADDLE_SPEED;
                             end if;
 
-                            -- Linkes Paddle
+                            -- Left Paddle
                             if BTN(2) = '1' then
                                 paddle_left_y_reg <= paddle_left_y_reg - PADDLE_SPEED;
                             elsif BTN(3) = '1' then
@@ -319,75 +329,75 @@ begin
                             end if;
 
                             ------------------------------------------------------------
-                            -- BALL-BEWEGUNG
+                            -- BALL-MOVEMENT
                             ------------------------------------------------------------
                             ball_x_reg <= ball_x_reg + ball_vx;
                             ball_y_reg <= ball_y_reg + ball_vy;
 
                             ------------------------------------------------------------
-                            -- WAND-KOLLISIONEN (oben / unten)
+                            -- WALL-COLLISIONEN 
                             ------------------------------------------------------------
-                            -- oben
+                            -- top
                             if ball_y_reg <= 0 then
                                 ball_y_reg <= -ball_y_reg;
                                 ball_vy    <= -ball_vy;
                             end if;
 
-                            -- unten
+                            -- bottom
                             if (ball_y_reg + BALL_SIZE) >= FRAME_HEIGHT then
                                 ball_y_reg <= 2*(FRAME_HEIGHT - BALL_SIZE) - ball_y_reg;
                                 ball_vy    <= -ball_vy;
                             end if;
 
                             ------------------------------------------------------------
-                            -- PADDLE-KOLLISIONEN (simple Spiegelung, Score++)
+                            -- PADDLE-COLLISIONEN 
                             ------------------------------------------------------------
-                            -- Linkes Paddle
+                            -- Left Paddle
                             if (ball_x_reg <= PADDLE_LEFT_X + PADDLE_WIDTH) and
                                (ball_x_reg + BALL_SIZE >= PADDLE_LEFT_X) and
                                (ball_y_reg + BALL_SIZE >= paddle_left_y_reg) and
                                (ball_y_reg <= paddle_left_y_reg + PADDLE_HEIGHT) then
 
                                 ball_x_reg <= PADDLE_LEFT_X + PADDLE_WIDTH + 1;
-                                ball_vx    <= abs(ball_vx);   -- Richtung nach rechts
+                                ball_vx    <= abs(ball_vx);   
                                 score_l    <= score_l + 1;
                             end if;
 
-                            -- Rechtes Paddle
+                            -- Right Paddle
                             if (ball_x_reg + BALL_SIZE >= PADDLE_RIGHT_X) and
                                (ball_x_reg <= PADDLE_RIGHT_X + PADDLE_WIDTH) and
                                (ball_y_reg + BALL_SIZE >= paddle_right_y_reg) and
                                (ball_y_reg <= paddle_right_y_reg + PADDLE_HEIGHT) then
 
                                 ball_x_reg <= PADDLE_RIGHT_X - BALL_SIZE - 1;
-                                ball_vx    <= -abs(ball_vx);  -- Richtung nach links
+                                ball_vx    <= -abs(ball_vx);  
                                 score_r    <= score_r + 1;
                             end if;
 
                             ------------------------------------------------------------
-                            -- BALL AUS DEM FELD → GENAU 1 LEBEN WEG + COUNTDOWN
+                            -- BALL OUT OF BOUNDS → DECREASE LIVES BY 1 + COUNTDOWN
                             ------------------------------------------------------------
                             if ball_x_reg < -BALL_SIZE then
-                                -- links verfehlt
+                                -- missed left
                                 if lives_l > 0 then
                                     lives_l <= lives_l - 1;
                                 end if;
 
                                 restart_counter   <= COUNTDOWN_TICKS;
-                                -- Ball in Mitte vorbereiten
+                                -- prepare ball in middle
                                 ball_x_reg <= BALL_START_X;
                                 ball_y_reg <= BALL_START_Y;
                                 ball_vx    <= BALL_SPEED_X;
                                 ball_vy    <= BALL_SPEED_Y;
 
                             elsif ball_x_reg > FRAME_WIDTH + BALL_SIZE then
-                                -- rechts verfehlt
+                                -- missed right
                                 if lives_r > 0 then
                                     lives_r <= lives_r - 1;
                                 end if;
 
                                 restart_counter   <= COUNTDOWN_TICKS;
-                                -- Ball in Mitte vorbereiten
+                                -- prepare ball
                                 ball_x_reg <= BALL_START_X;
                                 ball_y_reg <= BALL_START_Y;
                                 ball_vx    <= BALL_SPEED_X;

@@ -1,29 +1,34 @@
---score.vhd: ----------------------------------------------------------------------------------
--- Company:
--- Engineer:
---
--- Create Date: 20.11.2025
--- Design Name:
--- Module Name: score - Behavioral
--- Project Name:
--- Target Devices:
--- Tool Versions:
---
--- Description:
---   Draws the HUD overlay (Score + Hearts) for both players.
---   Uses FONT_ROM and HEART glyphs from font.vhd.
---
--- Inputs:
---   - pixel_x, pixel_y     : current VGA pixel position
---   - score_p1, score_p2   : integer scores 0..99
---   - lives_p1, lives_p2   : 0..3 hearts
---
--- Output:
---   - pixel_in_score       : '1' when this pixel belongs to HUD
---
--- Dependencies:
---   - font.vhd (FONT_ROM, HEART_FULL, HEART_EMPTY)
 ----------------------------------------------------------------------------------
+-- Company: DHBW Ravensburg
+-- Engineer: Pauline Barmettler 
+-- 
+-- Create Date: 20.11.2025
+-- Design Name: Score and Lives HUD
+-- Module Name: score - Behavioral
+-- Project Name: Pingpong
+-- Target Devices: Arty A7-35
+-- Tool Versions: 2025.1
+-- Description: 
+--   Renders the HUD (Head-Up Display) consisting of:
+--     - two-digit score for player 1 and 2
+--     - up to three hearts for player 1 and 2 (lives)
+--   Uses FONT_ROM for digits and HEART_FULL / HEART_EMPTY bitmaps from font.vhd.
+--   Outputs pixel_in_score = '1' for all pixels belonging to HUD elements.
+--
+-- Dependencies: 
+--   - IEEE.STD_LOGIC_1164
+--   - IEEE.NUMERIC_STD
+--   - font.vhd
+--
+-- Revision:
+--   Revision 0.01 - File Created
+--   Revision 0.02 - Added hearts rendering for lives
+--
+-- Additional Comments:
+--   The renderer draws HUD pixels with a higher priority than background and
+--   paddles, but below the endscreen overlay.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -65,7 +70,7 @@ architecture Behavioral of score is
 begin
 
     --------------------------------------------------------------------
-    -- Kombinatorik: berechnet pixel_in_score_next
+    -- calculates pixel_in_score_next
     --------------------------------------------------------------------
     process(pixel_x, pixel_y,
             score_p1, score_p2,
@@ -86,7 +91,7 @@ begin
         pixel_in_score_next <= '0';
 
         ------------------------------------------------------------
-        -- PLAYER 1 SCORE (links)
+        -- PLAYER 1 SCORE (left)
         ------------------------------------------------------------
         d1 := score_p1 / 10;
         d0 := score_p1 mod 10;
@@ -126,7 +131,7 @@ begin
         end if;
 
         ------------------------------------------------------------
-        -- PLAYER 2 SCORE (rechts)
+        -- PLAYER 2 SCORE (right)
         ------------------------------------------------------------
         d1 := score_p2 / 10;
         d0 := score_p2 mod 10;
@@ -221,7 +226,7 @@ begin
     end process;
 
     --------------------------------------------------------------------
-    -- Registerstufe
+    -- Register levels
     --------------------------------------------------------------------
     process(clk)
     begin

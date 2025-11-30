@@ -1,13 +1,13 @@
 --startscreen.vhd: ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: DHBW Ravensburg
+-- Engineer: Pauline Barmettler
 -- 
 -- Create Date: 20.11.2025
 -- Design Name: 
 -- Module Name: startscreen - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Project Name: PingPong
+-- Target Devices: Arty A7-35
+-- Tool Versions: 2025.1
 -- Description: 
 --   Creates the text overlay for the start screen.
 --   Displays:

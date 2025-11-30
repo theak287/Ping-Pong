@@ -5,10 +5,28 @@
 -- Create Date: 20.11.2025
 -- Design Name: 
 -- Module Name: endscreen - Behavioral
--- Project Name: Programmentwurf_PingPong
+-- Project Name: PingPong
 -- Target Devices: Arty A7-35
 -- Tool Versions: 2025.1
+-- Description: 
+--   Creates the text overlay for the end screen.
+--   Displays:
+--       "GAME OVER!"
+--       "PLAYER X WON!"
 --
+-- Dependencies:
+--   - font.vhd 
+--       provides FONT_ROM, TEXT_ROM,
+--       CHAR_WIDTH/HEIGHT, TEXT_COLS/ROWS,
+--       and global constants for text position and scale
+--
+-- Revision:
+--   Revision 0.01 - File Created
+--
+-- Additional Comments:
+--   Instantiated inside renderer.vhd.
+--   Outputs only one signal: pixel_in_endtext
+--   (set to '1' when the current pixel belongs to the end screen text).
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
 -- endscreen.vhd

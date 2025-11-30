@@ -1,24 +1,44 @@
---renderer.vhd: ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+----------------------------------------------------------------------------------
+-- Company: DHBW Ravensburg
+-- Engineer: Thea Karwowski, Pauline Barmettler
 -- 
 -- Create Date: 17.11.2025 18:00:19
--- Design Name: 
+-- Design Name: Pong Renderer
 -- Module Name: renderer - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Project Name: Pingpong
+-- Target Devices: Arty A7-35
+-- Tool Versions: 2025.1
 -- Description: 
--- 
+--   Combines all visual layers and generates the final RGB output:
+--     - start screen text
+--     - end screen text
+--     - countdown overlay
+--     - score and lives HUD
+--     - game scene (ball, paddles, midline, background)
+--   Priority order: endscreen > countdown > HUD > ball > paddles > midline > background.
+--
 -- Dependencies: 
--- 
+--   - IEEE.STD_LOGIC_1164
+--   - IEEE.NUMERIC_STD
+--   - font.vhd
+--   - game_pkg.vhd
+--   - startscreen.vhd
+--   - endscreen.vhd
+--   - score.vhd
+--   - countdown.vhd
+--
 -- Revision:
--- Revision 0.01 - File Created
+--   Revision 0.01 - File Created
+--   Revision 0.02 - Added midline and paddle coloring
+--   Revision 0.03 - Integrated HUD, endscreen and countdown overlays
+--
 -- Additional Comments:
--- 
+--   The renderer is purely combinational/sequential drawing logic and does not
+--   implement any game rules.
 ----------------------------------------------------------------------------------
+
 ----------------------------------------------------------------------------------
--- renderer.vhd - FINAL VERSION WITH COUNTDOWN, START/ENDSCREEN, HUD, PONG FIELD
+-- renderer.vhd 
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -223,7 +243,7 @@ begin
 
 
     ----------------------------------------------------------------------------
-    -- FINAL RGB PRIORITY SYSTEM
+    -- RGB PRIORITY SYSTEM
     ----------------------------------------------------------------------------
     process(clk)
     begin

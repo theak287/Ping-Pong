@@ -1,0 +1,100 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Sun Nov 30 17:03:14 2025
+| Host         : NB-TJ-01 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7a35ti
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    22 |
+|    Minimum number of control sets                        |    22 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    52 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    22 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     5 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     2 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    11 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              16 |           13 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              46 |           17 |
+| Yes          | No                    | No                     |              21 |           11 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             289 |           86 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------------+-----------------------------------------+---------------------------------------------+------------------+----------------+--------------+
+|       Clock Signal      |              Enable Signal              |               Set/Reset Signal              | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------+-----------------------------------------+---------------------------------------------+------------------+----------------+--------------+
+|  clk_inst/inst/clk_out1 | BTN_IBUF[0]                             | game_inst/reset                             |                1 |              1 |         1.00 |
+|  clk_inst/inst/clk_out1 |                                         | renderer_inst/score_inst/game_running_reg_0 |                2 |              4 |         2.00 |
+|  clk_inst/inst/clk_out1 |                                         | vga_inst/game_running_reg                   |                1 |              4 |         4.00 |
+|  clk_inst/inst/clk_out1 |                                         | vga_inst/game_running_reg_0                 |                1 |              4 |         4.00 |
+|  clk_inst/inst/clk_out1 | game_inst/ball_x_reg[10]_i_1_n_0        | game_inst/ball_x_reg[7]_i_1_n_0             |                2 |              4 |         2.00 |
+|  clk_inst/inst/clk_out1 | game_inst/restart_counter[6]_i_2_n_0    | game_inst/restart_counter[6]_i_1_n_0        |                1 |              4 |         4.00 |
+|  clk_inst/inst/clk_out1 | game_inst/ball_x_reg[10]_i_1_n_0        |                                             |                3 |              7 |         2.33 |
+|  clk_inst/inst/clk_out1 | game_inst/paddle_left_y_reg[9]_i_1_n_0  |                                             |                4 |              7 |         1.75 |
+|  clk_inst/inst/clk_out1 | game_inst/paddle_right_y_reg[9]_i_1_n_0 |                                             |                4 |              7 |         1.75 |
+|  clk_inst/inst/clk_out1 |                                         | vga_inst/h_count[0]_i_1_n_0                 |                6 |             12 |         2.00 |
+|  clk_inst/inst/clk_out1 | vga_inst/v_count                        | game_inst/reset                             |                5 |             12 |         2.40 |
+|  clk_inst/inst/clk_out1 |                                         |                                             |               13 |             16 |         1.23 |
+|  clk_inst/inst/clk_out1 | game_inst/ball_x_reg[10]_i_1_n_0        | game_inst/ball_x_reg[31]_i_1_n_0            |                7 |             21 |         3.00 |
+|  clk_inst/inst/clk_out1 |                                         | game_inst/tick_counter[21]_i_1_n_0          |                7 |             22 |         3.14 |
+|  clk_inst/inst/clk_out1 | game_inst/restart_counter               | game_inst/restart_counter[31]_i_1_n_0       |                9 |             28 |         3.11 |
+|  clk_inst/inst/clk_out1 | game_inst/ball_vx[30]_i_2_n_0           | game_inst/ball_vx[30]_i_1_n_0               |               10 |             28 |         2.80 |
+|  clk_inst/inst/clk_out1 | game_inst/ball_vy[31]_i_2_n_0           | game_inst/ball_vy[31]_i_1_n_0               |               11 |             31 |         2.82 |
+|  clk_inst/inst/clk_out1 | game_inst/game_tick_reg_n_0             | game_inst/ball_x_reg[31]_i_1_n_0            |                8 |             32 |         4.00 |
+|  clk_inst/inst/clk_out1 | game_inst/lives_l                       | game_inst/reset                             |                8 |             32 |         4.00 |
+|  clk_inst/inst/clk_out1 | game_inst/lives_r                       | game_inst/reset                             |                8 |             32 |         4.00 |
+|  clk_inst/inst/clk_out1 | game_inst/score_l                       | game_inst/reset                             |                8 |             32 |         4.00 |
+|  clk_inst/inst/clk_out1 | game_inst/score_r                       | game_inst/reset                             |                8 |             32 |         4.00 |
++-------------------------+-----------------------------------------+---------------------------------------------+------------------+----------------+--------------+
+
+

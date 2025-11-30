@@ -1,22 +1,30 @@
---game_pkg.vhd:----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 25.11.2025 22:52:00
--- Design Name: 
--- Module Name: game_pkg - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
 ----------------------------------------------------------------------------------
+-- Company: DHBW Ravensburg
+-- Engineer: Pauline Barmettler
+-- 
+-- Create Date: 20.11.2025
+-- Design Name: Pong Game Constants Package
+-- Module Name: game_pkg - Package
+-- Project Name: Pingpong
+-- Target Devices: Arty A7-35
+-- Tool Versions: 2025.1
+-- Description: 
+--   Common package for all game-related constants and types, such as frame
+--   size, ball and paddle dimensions, initial positions, base speeds and
+--   countdown timing. Shared between game_logic and renderer.
+--
+-- Dependencies: 
+--   - IEEE.STD_LOGIC_1164
+--
+-- Revision:
+--   Revision 0.01 - File Created
+--   Revision 0.02 - Added countdown-related constants and ball start position
+--
+-- Additional Comments:
+--   Centralizes "magic numbers" so resolution or gameplay tweaks can be done
+--   in one place.
+----------------------------------------------------------------------------------
+
 ----------------------------------------------------------------------------------
 -- game_pkg.vhd
 -- Gemeinsame Spielkonstanten für Game-Logic und Renderer
@@ -31,8 +39,8 @@ package game_pkg is
 
     -- Ball
     constant BALL_SIZE    : integer := 18;
-    constant BALL_SPEED_X : integer := 6;
-    constant BALL_SPEED_Y : integer := 6;
+    constant BALL_SPEED_X : integer := 8;
+    constant BALL_SPEED_Y : integer := 8;
 
     constant BALL_START_X : integer := FRAME_WIDTH/2 - BALL_SIZE/2;
     constant BALL_START_Y : integer := FRAME_HEIGHT/2 - BALL_SIZE/2;
